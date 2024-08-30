@@ -1,16 +1,16 @@
 ---
-import "@styles/base.css";
+import '@styles/base.css';
 const { content } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{content.title}</title>
-	</head>
-	<body class="font-sans text-lg text-gray-900 bg-gray-100">
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{content.title}</title>
+  </head>
+  <body class="container mx-auto p-8 max-w-5xl bg-gray-100 font-sans text-lg text-gray-900">
+    <slot />
+  </body>
 </html>
