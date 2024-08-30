@@ -1,24 +1,28 @@
 ---
 // Component Imports
-import Button from '../components/Button.astro';
+import Button from '../components/Atoms/Button.astro';
+import Main from '../layouts/main.astro';
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
+
+const content = {
+  title: 'Mauricio Romero',
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
+<Main content={content}>
+  <h1
+	class="text-3xl font-bold underline"
+	>My name is <span class="bg-blend-color-dodge text-orange-400 divide-teal-900 ">Mauricio Romero</span></h1>
+  <p>I am a software engineer</p>
+  <p>Welcome to my website!</p>
+  <p>This is an example of an Astro component.</p>
+  <p>You can use it in your pages like this:</p>
 
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
-		</div>
-	</body>
-</html>
+  <p>
+    <Button>Click me</Button>
+  </p>
+</Main>
+
+

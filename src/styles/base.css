@@ -1,0 +1,8 @@
+@tailwind base;
+
+@layer base {
+  :root,
+  body {
+    @apply font-sans antialiased;
+  }
+}
