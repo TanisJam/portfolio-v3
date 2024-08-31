@@ -1,9 +1,13 @@
 ---
-
+import Email from '@components/atoms/icons/Email.astro';
+import Github from '@components/atoms/icons/Github.astro';
+import LinkedIn from '@components/atoms/icons/LinkedIn.astro';
+import Location from '@components/atoms/icons/Location.astro';
+import Resume from '@components/atoms/icons/Resume.astro';
 ---
 
 <header class="header">
-  <section class="pt-20 md:pt-40">
+  <section class="pt-4 md:pt-40">
     <div class="container mx-auto px-8 lg:flex">
       <div class="flex flex-col justify-center lg:w-1/2">
         <img
@@ -17,13 +21,49 @@
           Mauricio N. Romero
         </h1>
         <p class="mt-6 text-3xl font-light lg:text-3xl">Front-end Developer</p>
-        <p>Argentina</p>
-        <p>mauricionromero@hotmail.com</p>
-        <p class="mt-2 md:mt-4">
-          <a href="#" class="text-teal-500 hover:underline">CV</a> |
-          <a href="#" class="text-teal-500 hover:underline">Github</a> |
-          <a href="#" class="text-teal-500 hover:underline">LinkedIn</a>
+        <p class="flex items-center gap-1">
+          <span
+            class="flex h-8 w-8 items-center justify-center rounded-lg text-retro_dark/80"
+          >
+            <Location />
+          </span>
+          Argentina
         </p>
+        <span class="flex items-center gap-1">
+          <a
+          title="Email"
+           target="_blank" href="mailto:mauricionromero@hotmail.com">
+            <span
+              class="flex h-8 w-8 items-center justify-center rounded-lg text-retro_dark/80 hover:bg-retro_light/40 hover:text-retro_dark"
+            >
+              <Email />
+            </span>
+          </a> mauricionromero@hotmail.com
+        </span>
+        <div class="flex items-center gap-1">
+          <a
+            title="Resume"
+            target="_blank"
+            href="#"
+            class="flex h-8 w-8 items-center justify-center rounded-lg text-retro_dark/80 hover:bg-retro_light/40 hover:text-retro_dark"
+          >
+            <Resume /></a
+          > |
+          <a
+            title="GitHub"
+            target="_blank"
+            href="#"
+            class="flex h-8 w-8 items-center justify-center rounded-lg text-retro_dark/80 hover:bg-retro_light/40 hover:text-retro_dark"
+            ><Github /></a
+          > |
+          <a
+            title="LinkedIn"
+            target="_blank"
+            href="#"
+            class="flex h-8 w-8 items-center justify-center rounded-lg text-retro_dark/80 hover:bg-retro_light/40 hover:text-retro_dark"
+            ><LinkedIn /></a
+          >
+        </div>
       </div>
     </div>
   </section>

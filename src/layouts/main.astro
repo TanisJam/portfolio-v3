@@ -10,7 +10,16 @@ const { content } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{content.title}</title>
   </head>
-  <body class="container mx-auto p-8 max-w-5xl bg-gray-100 font-sans text-lg text-gray-900">
+  <body
+    class="body container mx-auto min-h-screen max-w-5xl p-8 font-sans text-lg text-retro_dark"
+  >
     <slot />
   </body>
 </html>
+
+<style>
+  .body {
+    background: linear-gradient(to bottom, #44779bda, #67a4cfde),
+      url(/assets/noise.svg);
+  }
+</style>
