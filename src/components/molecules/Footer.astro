@@ -1,0 +1,40 @@
+---
+import Email from '@atoms/icons/Email.astro';
+import Links from './Links.astro';
+import Toast from '@atoms/Toast.astro';
+---
+
+<footer class="-mt-8 flex flex-col items-center justify-center text-center">
+  <Links position="footer" />
+  <span
+    class="relative flex w-fit items-center justify-center gap-1 text-center lg:mx-0"
+  >
+    <a title="Email" target="_blank" href="mailto:mauricionromero@hotmail.com">
+      <span
+        class="flex h-8 w-8 items-center justify-center rounded-lg text-retro_dark/80 hover:bg-retro_light/40 hover:text-retro_dark"
+      >
+        <Email />
+      </span>
+    </a><button title="Click to copy" id="email-btn-footer"
+      >mauricionromero@hotmail.com</button
+    >
+    <span id="toast-footer" class="absolute bottom-0 left-1/2 hidden">
+      <Toast />
+    </span>
+  </span>
+</footer>
+
+<script>
+  const emailBtn = document.body.querySelector('#email-btn-footer');
+  const toastEl = document.body.querySelector('#toast-footer');
+  const copyEmailFooter = async () => {
+    try {
+      await navigator.clipboard.writeText(emailBtn?.textContent || '');
+      toastEl?.classList.remove('hidden');
+      setTimeout(() => toastEl?.classList.add('hidden'), 400);
+    } catch (err) {
+      console.log('Error', err);
+    }
+  };
+  emailBtn?.addEventListener('mousedown', copyEmailFooter);
+</script>

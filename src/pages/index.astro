@@ -8,6 +8,7 @@ import Section from '@molecules/Section.astro';
 import Chip from '@atoms/Chip.astro';
 import CardExperience from '@molecules/CardExperience.astro';
 import CardProject from '@molecules/CardProject.astro';
+import Footer from '@molecules/Footer.astro';
 
 const content = {
   title: 'Mauricio Romero',
@@ -90,8 +91,8 @@ const projects = [
     description:
       'This app allows you to create a fake superhero team to easily see their combined power stats. Credentials to access: Email: challenge@alkemy.org Password: react.',
     techs: ['React'],
-    live: null, // Add the live link if available
-    source: null, // Add the source link if available
+    live: '#', // Add the live link if available
+    source: '#', // Add the source link if available
     screenshot: '/assets/projects/nft.png',
   },
   {
@@ -101,8 +102,8 @@ const projects = [
     description:
       'This is a simple blog management app. It allows you to create, edit, and delete posts. It uses React, Redux, and a {JSON} Placeholder fake endpoint.',
     techs: ['React', 'Redux'],
-    live: null,
-    source: null,
+    live: '#',
+    source: '#',
     screenshot: '/assets/projects/nft.png',
   },
   {
@@ -112,8 +113,8 @@ const projects = [
     description:
       'As part of the Evuca project, we were tasked with creating a website to apply the knowledge acquired so far. This strengthened our use of HTML, CSS, and JavaScript. We used Webpack, Git, and Less in this project. It is a simple trivia game with achievements.',
     techs: ['HTML', 'CSS', 'JavaScript', 'Webpack', 'Git', 'Less'],
-    live: null,
-    source: null,
+    live: '#',
+    source: '#',
     screenshot: '/assets/projects/nft.png',
   },
   {
@@ -123,8 +124,8 @@ const projects = [
     description:
       'Landing page for NFT transactions. This was created to practice using NextJs and Sass.',
     techs: ['NextJs', 'Sass'],
-    live: null,
-    source: null,
+    live: '#',
+    source: '#',
     screenshot: '/assets/projects/nft.png',
   },
   {
@@ -134,8 +135,8 @@ const projects = [
     description:
       'This is a simple e-commerce app. You can add products to your cart and checkout. It uses React, Redux, Bootstrap, and Firebase as the database.',
     techs: ['React', 'Redux', 'Bootstrap', 'Firebase'],
-    live: null,
-    source: null,
+    live: '#',
+    source: '#',
     screenshot: '/assets/projects/nft.png',
   },
   {
@@ -145,8 +146,8 @@ const projects = [
     description:
       'React-based weather seeker. It consumes a free OpenWeatherMap API. I used CreateReactApp, React Router, and Styled Components.',
     techs: ['React', 'CreateReactApp', 'React Router', 'Styled Components'],
-    live: null,
-    source: null,
+    live: '#',
+    source: '#',
     screenshot: '/assets/projects/nft.png',
   },
   {
@@ -156,8 +157,8 @@ const projects = [
     description:
       'A scienceless simulation of how temperature and humidity affect a bunch of computer-generated slimes. My initial thoughts for this project were to practice with Objects and Classes, but I also learned about physics and how to manipulate CSS variables.',
     techs: ['JavaScript', 'CSS'],
-    live: null,
-    source: null,
+    live: '#',
+    source: '#',
     screenshot: '/assets/projects/nft.png',
   },
   {
@@ -167,8 +168,8 @@ const projects = [
     description:
       'ETCH-A-SKETCH game with some extra functionalities. Currently, it only works on desktop.',
     techs: ['JavaScript'],
-    live: null,
-    source: null,
+    live: '#',
+    source: '#',
     screenshot: '/assets/projects/nft.png',
   },
 ];
@@ -225,4 +226,6 @@ const projects = [
       )
     }
   </Section>
+  <Divider />
+  <Footer/>
 </Main>

@@ -8,6 +8,16 @@
     @apply font-sans antialiased;
   }
 
+  ::-moz-selection {
+    /* Code for Firefox */
+
+    @apply bg-retro_light/40;
+  }
+
+  ::selection {
+    @apply bg-retro_light/40;
+  }
+
   #card-container {
     position: relative;
   }

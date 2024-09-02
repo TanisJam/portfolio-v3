@@ -1,5 +1,6 @@
 ---
 import '@styles/base.css';
+import { Tooltips } from 'astro-tooltips';
 const { content } = Astro.props;
 ---
 
@@ -9,6 +10,7 @@ const { content } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{content.title}</title>
+    <Tooltips placement='top' interactive={false}  />
   </head>
   <body
     class="body container mx-auto min-h-screen max-w-5xl p-8 font-sans text-lg text-retro_dark"
