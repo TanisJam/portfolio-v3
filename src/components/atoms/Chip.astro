@@ -1,0 +1,14 @@
+---
+const { label, variant = 'primary' } = Astro.props;
+---
+
+<div
+  class:list={variant === 'primary'
+    ? 'text-gray-200 bg-retro_blue hover:bg-retro_red'
+    : 'text-gray-200 bg-retro_green '}
+  class="relative grid select-none items-center whitespace-nowrap rounded-lg px-3 py-1.5 font-sans text-xs font-bold hover:shadow-sm"
+>
+  <span class="">
+    {label}
+  </span>
+</div>

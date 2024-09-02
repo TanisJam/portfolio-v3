@@ -4,14 +4,106 @@ import Main from '@layouts/main.astro';
 import Header from '@organisms/Header.astro';
 import About from '@molecules/About.astro';
 import Divider from '@atoms/Divider.astro';
+import Section from '@components/molecules/Section.astro';
+import Chip from '@components/atoms/Chip.astro';
+import CardExperience from '@components/molecules/CardExperience.astro';
 
 const content = {
   title: 'Mauricio Romero',
 };
+
+const TECHS = [
+  'Vite',
+  'NextJS',
+  'ReactJS',
+  'Tailwind CSS',
+  'TypeScript',
+  'Redux',
+  'Sass',
+  'CSS',
+  'HTML',
+  'JavaScript',
+  'Strapi',
+  'SQlite',
+  'MongoDB',
+  'Bootstrap',
+  'Styled-components',
+  'Node',
+  'Docker',
+  'Jest',
+  'GitHub',
+  'Jira',
+];
+
+const EXPERIENCE = [
+  {
+    title: 'IT consultant and Developer',
+    company: 'Freelance',
+    image: '/assets/logo.svg',
+    date: '2021 - Present',
+    description:
+      'Developing and maintaining web applications and IT consulting including, hardware, network components, security and basic architecture.',
+  },
+  {
+    title: 'Frontend Developer',
+    company: 'Viking Sasquatch',
+    link: 'https://www.linkedin.com/company/viking-sasquatch/',
+    image: '/assets/VS.jpg',
+    date: 'Dec 2022 - May 2024',
+    description: `
+      Contributed to building a mortgage and loan system using React, TailwindCSS, and TypeScript.
+      Optimized frontend performance and supported Vue migration.
+      Designed and implemented the UI for a PITI Calculator in React Native during a hackathon.
+    `,
+  },
+  {
+    title: 'Frontend Developer',
+    company: 'FirstClose',
+    link: 'https://www.linkedin.com/company/firstclose/',
+    image: '/assets/FC.jpg',
+    date: 'Dec 2022 - Apr 2023 (Project)',
+    description: `
+      Enhanced UI for mortgage applications and migrated to ReactJS.
+      Improved functionality and worked closely with the team on design.
+    `,
+  },
+  {
+    title: 'Frontend Developer',
+    company: 'Esto Es',
+    link: 'https://www.linkedin.com/company/estoes/posts/',
+    image: '/assets/estoes.jpg',
+    date: 'Apr 2022 - Dec 2022',
+    description: `
+      Developed features for the Institutional Telecom site using Next.js and MaterialUI.
+      Led the migration from CodeIgniter to Next.js with a focus on SEO and performance through server-side rendering.
+    `,
+  },
+];
 ---
 
 <Main content={content}>
   <Header />
   <About />
   <Divider />
+  <Section title="I usually use">
+    <div class="container mt-4 flex flex-wrap gap-2">
+      {TECHS.map((tech) => <Chip label={tech} />)}
+    </div>
+  </Section>
+  <Section title="Experience">
+    {
+      EXPERIENCE.map((exp) => (
+        <CardExperience
+          icon={exp.image}
+          company={exp.company}
+          link={exp.link}
+          position={exp.title}
+          timeline={exp.date}
+          description={exp.description}
+        />
+      ))
+    }
+  </Section>
+
+  <Section title="Projects" />
 </Main>

@@ -1,46 +1,43 @@
 ---
-import Email from '@components/atoms/icons/Email.astro';
-import Github from '@components/atoms/icons/Github.astro';
-import LinkedIn from '@components/atoms/icons/LinkedIn.astro';
-import Location from '@components/atoms/icons/Location.astro';
-import Resume from '@components/atoms/icons/Resume.astro';
+import Email from '@atoms/icons/Email.astro';
+import Github from '@atoms/icons/Github.astro';
+import LinkedIn from '@atoms/icons/LinkedIn.astro';
+import Resume from '@atoms/icons/Resume.astro';
+import Toast from '@atoms/Toast.astro'
 ---
 
 <header class="header">
-  <section class="pt-4 md:pt-40">
+  <section class="pt-4 lg:pt-8">
     <div class="container mx-auto px-8 lg:flex">
       <div class="flex flex-col justify-center lg:w-1/2">
         <img
-          class="mx-auto h-64 w-64 rounded-full shadow-lg"
-          src="/assets/images/orange.jpg"
+          class="mx-auto h-64 w-64 rounded-full shadow-md shadow-retro_blue"
+          src="/assets/images/mnr_photo.jpg"
           alt="Mauricio Romero Portrait"
         />
       </div>
-      <div class="mt-8 text-center lg:mt-0 lg:w-1/2 lg:text-left">
-        <h1 class="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">
-          Mauricio N. Romero
+      <div
+        class="mt-8 flex flex-col justify-center text-center lg:mt-0 lg:w-1/2 lg:text-left"
+      >
+        <h1 class="text-4xl font-bold leading-none lg:text-5xl">
+          <!-- <span id="m" data-text="M">M</span>auricio N. Romero -->
+          <span id="initial" data-text="M">M</span>{
+            ['a','u','r','i','c','i','o'].map((letter) => (
+              <span id="letter" data-text={letter}>{letter}</span>
+            ))
+          }
+          <span id="initial" data-text="N">N</span><span id="letter" data-text='.'>.</span>
+          <span id="initial" data-text="R">R</span>{
+            ['o','m','e','r','o'].map((letter) => (
+              <span id="letter" data-text={letter}>{letter}</span>
+            ))
+          }
         </h1>
         <p class="mt-6 text-3xl font-light lg:text-3xl">Front-end Developer</p>
-        <p class="flex items-center gap-1">
-          <span
-            class="flex h-8 w-8 items-center justify-center rounded-lg text-retro_dark/80"
-          >
-            <Location />
-          </span>
-          Argentina
-        </p>
-        <span class="flex items-center gap-1">
-          <a
-          title="Email"
-           target="_blank" href="mailto:mauricionromero@hotmail.com">
-            <span
-              class="flex h-8 w-8 items-center justify-center rounded-lg text-retro_dark/80 hover:bg-retro_light/40 hover:text-retro_dark"
-            >
-              <Email />
-            </span>
-          </a> mauricionromero@hotmail.com
-        </span>
-        <div class="flex items-center gap-1">
+
+        <div
+          class="flex items-center justify-center gap-1 pt-4 lg:justify-start"
+        >
           <a
             title="Resume"
             target="_blank"
@@ -64,7 +61,88 @@ import Resume from '@components/atoms/icons/Resume.astro';
             ><LinkedIn /></a
           >
         </div>
+        <span class="relative flex items-center justify-center gap-1 lg:justify-start">
+          <a
+            title="Email"
+            target="_blank"
+            href="mailto:mauricionromero@hotmail.com"
+          >
+            <span
+              class="flex h-8 w-8 items-center justify-center rounded-lg text-retro_dark/80 hover:bg-retro_light/40 hover:text-retro_dark"
+            >
+              <Email />
+            </span>
+          </a><button id="email-btn">mauricionromero@hotmail.com</button>
+          <span id="toast" class="hidden absolute bottom-0 left-1/2" >
+            <Toast/>
+          </span>
+        </span>
       </div>
     </div>
   </section>
 </header>
+
+<script >
+  const emailBtn = document.body.querySelector('#email-btn')
+  const toastEl = document.body.querySelector('#toast');  
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(emailBtn?.textContent || '')
+      toastEl?.classList.remove('hidden')
+      setTimeout(()=>toastEl?.classList.add('hidden'),400)
+    } catch (err) {
+      console.log('Error', err)
+    }
+  }
+  emailBtn?.addEventListener('mousedown', copyEmail)
+
+</script>
+
+<style scoped>
+
+#copied {
+  
+}
+
+
+#initial {
+    position: relative;
+  }
+  #initial::before {
+    content: attr(data-text);
+    position: absolute;
+    /* top: 0.11em;
+    left: 0em; */
+    top: 0.09em;
+    left: 0.02em;
+    color: #c1463096;
+    z-index: -1;
+    transition: .5s;
+    transition-timing-function: cubic-bezier(0, 0.99, 0.32, 1.275);
+  }
+  #initial:hover::before {
+    color: #c14630;
+    top: 0.05em;
+    left: 0.07em;
+  }
+  #letter {
+    position: relative;
+  }
+  #letter::before {
+    content: attr(data-text);
+    position: absolute;
+    /* top: 0.11em;
+    left: 0em; */
+    top: 0.099em;
+    left: 0em;
+    color: #c1463096;
+    z-index: -1;
+    transition: 1s;
+    transition-timing-function: cubic-bezier(0, 0.99, 0.32, 1.275);
+  }
+  #letter:hover::before {
+    color: #c14630;
+    top: 0.05em;
+    left: 0.07em;
+  }
+</style>
