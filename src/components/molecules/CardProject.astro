@@ -1,0 +1,68 @@
+---
+import Chip from '@atoms/Chip.astro';
+
+const { icon, title, subtitle, description, techs, live, source, screenshot } =
+  Astro.props;
+---
+
+<div
+  id="card-container"
+  class="hover:bg-retro_white/5 mb-8 mt-4 flex flex-col items-start justify-between gap-2 md:flex-row"
+>
+  <div class="flex space-x-4">
+    <div
+      class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-retro_blue"
+    >
+      <img class="rounded-full" src={icon} />
+    </div>
+
+    <div class="flex flex-col items-center">
+      <div>
+        <h3 class="text-xl font-bold">{title}</h3>
+        <p class="text-lg font-light">{subtitle}</p>
+        <p class="text-sm font-normal">
+          {description}
+        </p>
+        <div class="my-2 flex space-x-2">
+          {techs?.map((tech: string) => <Chip label={tech} size="small" />)}
+        </div>
+      </div>
+      <div class="flex gap-4 my-2 self-start">
+        <a href={live} class="flex items-center gap-1 text-sm">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+            ></path>
+          </svg>
+          <span>Live</span>
+        </a>
+        <a href={source} class="flex items-center gap-1 text-sm">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+            ></path>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <img
+    src={screenshot}
+    alt={subtitle}
+    class="self-center rounded-md md:w-1/3 md:max-w-64"
+    style={{ aspectRatio: '4/3', objectFit: 'cover' }}
+  />
+</div>

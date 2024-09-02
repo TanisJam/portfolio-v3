@@ -4,7 +4,10 @@ import Chip from '@components/atoms/Chip.astro';
 const { icon, company, position, description, timeline, link } = Astro.props;
 ---
 
-<div class="mt-4 flex items-start space-x-4">
+<div
+  id="card-container"
+  class="hover:bg-retro_white/5 mt-4 flex items-start space-x-4"
+>
   <div
     class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-retro_blue"
   >
@@ -21,7 +24,11 @@ const { icon, company, position, description, timeline, link } = Astro.props;
     <div class="flex items-center justify-between">
       {
         link ? (
-          <a href={link} target="_blank" class="decoration-retro_red hover:underline">
+          <a
+            href={link}
+            target="_blank"
+            class="decoration-retro_red hover:underline"
+          >
             <h3 class="text-xl font-semibold">{company}</h3>
           </a>
         ) : (
@@ -32,7 +39,7 @@ const { icon, company, position, description, timeline, link } = Astro.props;
       <!-- <span class="text-green-500 text-sm">{timeline}</span> -->
     </div>
     <p class="text-lg font-light">{position}</p>
-    <p class="text-sm font-medium">
+    <p class="text-sm font-normal">
       {description}
     </p>
   </div>
