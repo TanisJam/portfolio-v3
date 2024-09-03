@@ -9,32 +9,33 @@ import Chip from '@atoms/Chip.astro';
 import CardExperience from '@molecules/CardExperience.astro';
 import CardProject from '@molecules/CardProject.astro';
 import Footer from '@molecules/Footer.astro';
+import { Icon } from 'astro-icon/components';
 
 const content = {
   title: 'Mauricio Romero',
 };
 
 const TECHS = [
-  'Vite',
-  'NextJS',
-  'ReactJS',
-  'Tailwind CSS',
-  'TypeScript',
-  'Redux',
-  'Sass',
-  'CSS',
-  'HTML',
-  'JavaScript',
-  'Strapi',
-  'SQlite',
-  'MongoDB',
-  'Bootstrap',
-  'Styled-components',
-  'Node',
-  'Docker',
-  'Jest',
-  'GitHub',
-  'Jira',
+  { name: 'Vite', logo: 'vite' },
+  { name: 'NextJS', logo: 'nextjs' },
+  { name: 'ReactJS', logo: 'react' },
+  { name: 'Tailwind CSS', logo: 'tailwind' },
+  { name: 'TypeScript', logo: 'ts' },
+  { name: 'Redux', logo: 'redux' },
+  { name: 'Sass', logo: 'sass' },
+  { name: 'CSS', logo: 'css' },
+  { name: 'HTML', logo: 'html' },
+  { name: 'JavaScript', logo: 'js' },
+  { name: 'Strapi', logo: 'strapi' },
+  { name: 'SQLite', logo: 'sqlite' },
+  { name: 'MongoDB', logo: 'mongodb' },
+  { name: 'Bootstrap', logo: 'bootstrap' },
+  { name: 'Styled-components', logo: 'sc' },
+  { name: 'Node', logo: 'node' },
+  { name: 'Docker', logo: 'docker' },
+  { name: 'Jest', logo: 'jest' },
+  { name: 'GitHub', logo: 'github' },
+  { name: 'Jira', logo: 'jira' },
 ];
 
 const EXPERIENCE = [
@@ -82,96 +83,95 @@ const EXPERIENCE = [
   },
 ];
 
-
 const projects = [
   {
-    icon: '/assets/logo.svg',
+    icon: 'superhero',
     title: 'Superhero Team Inspector',
     subtitle: 'App to Create a Superhero Team',
     description:
       'This app allows you to create a fake superhero team to easily see their combined power stats. Credentials to access: Email: challenge@alkemy.org Password: react.',
-    techs: ['React'],
-    live: '#', // Add the live link if available
-    source: '#', // Add the source link if available
-    screenshot: '/assets/projects/nft.png',
+    techs: ['React', 'CSS', 'Redux'],
+    live: 'https://sti.vercel.app/',
+    source: 'https://github.com/TanisJam/sti',
+    screenshot: '/assets/projects/sti.png',
   },
   {
-    icon: '/assets/logo.svg',
+    icon: 'blog',
     title: 'Blog Management',
     subtitle: 'Blog Management App',
     description:
       'This is a simple blog management app. It allows you to create, edit, and delete posts. It uses React, Redux, and a {JSON} Placeholder fake endpoint.',
-    techs: ['React', 'Redux'],
-    live: '#',
-    source: '#',
-    screenshot: '/assets/projects/nft.png',
+    techs: ['React', 'Redux', 'Bootstrap'],
+    live: 'https://blogment.vercel.app/',
+    source: 'https://github.com/TanisJam/almemy-warm-up',
+    screenshot: '/assets/projects/blog.png',
   },
   {
-    icon: '/assets/logo.svg',
+    icon: 'trivia',
     title: 'Trivia',
     subtitle: 'Trivia Game',
     description:
       'As part of the Evuca project, we were tasked with creating a website to apply the knowledge acquired so far. This strengthened our use of HTML, CSS, and JavaScript. We used Webpack, Git, and Less in this project. It is a simple trivia game with achievements.',
     techs: ['HTML', 'CSS', 'JavaScript', 'Webpack', 'Git', 'Less'],
-    live: '#',
-    source: '#',
-    screenshot: '/assets/projects/nft.png',
+    live: 'https://trivia15dias.vercel.app/',
+    source: 'https://github.com/TanisJam/trivia15dias',
+    screenshot: '/assets/projects/trivia.png',
   },
   {
-    icon: '/assets/logo.svg',
+    icon: 'nft',
     title: 'Hero NFT',
     subtitle: 'Landing Page for NFT Transactions',
     description:
       'Landing page for NFT transactions. This was created to practice using NextJs and Sass.',
-    techs: ['NextJs', 'Sass'],
-    live: '#',
-    source: '#',
+    techs: ['NextJs', 'Sass', 'Eslint'],
+    live: 'https://hero-nft.vercel.app/',
+    source: 'https://github.com/TanisJam/hero-page-nft',
     screenshot: '/assets/projects/nft.png',
   },
+  // {
+  //   icon: '/assets/logo.svg',
+  //   title: 'SuperMarket',
+  //   subtitle: 'E-Commerce App',
+  //   description:
+  //     'This is a simple e-commerce app. You can add products to your cart and checkout. It uses React, Redux, Bootstrap, and Firebase as the database.',
+  //   techs: ['React', 'Redux', 'Bootstrap', 'Firebase'],
+  //   live: 'https://super-evuca.vercel.app/',
+  //   source: 'https://github.com/TanisJam/superCualquiera',
+  //   screenshot: '/assets/projects/super.png',
+  // },
   {
-    icon: '/assets/logo.svg',
-    title: 'SuperMarket',
-    subtitle: 'E-Commerce App',
-    description:
-      'This is a simple e-commerce app. You can add products to your cart and checkout. It uses React, Redux, Bootstrap, and Firebase as the database.',
-    techs: ['React', 'Redux', 'Bootstrap', 'Firebase'],
-    live: '#',
-    source: '#',
-    screenshot: '/assets/projects/nft.png',
-  },
-  {
-    icon: '/assets/logo.svg',
+    icon: 'rain',
     title: 'Its Raining',
     subtitle: 'React-Based Weather Seeker',
     description:
       'React-based weather seeker. It consumes a free OpenWeatherMap API. I used CreateReactApp, React Router, and Styled Components.',
     techs: ['React', 'CreateReactApp', 'React Router', 'Styled Components'],
-    live: '#',
-    source: '#',
-    screenshot: '/assets/projects/nft.png',
+    live: 'https://its-raining.vercel.app/',
+    source: 'https://github.com/TanisJam/its-raining',
+    screenshot: '/assets/projects/weather.png',
   },
   {
-    icon: '/assets/logo.svg',
+    icon: 'humidity',
     title: 'Temperature and Humidity Simulator',
     subtitle: 'Temperature and Humidity Simulation',
     description:
       'A scienceless simulation of how temperature and humidity affect a bunch of computer-generated slimes. My initial thoughts for this project were to practice with Objects and Classes, but I also learned about physics and how to manipulate CSS variables.',
     techs: ['JavaScript', 'CSS'],
-    live: '#',
-    source: '#',
-    screenshot: '/assets/projects/nft.png',
+    live: 'https://tanisjam.github.io/cold-humidity-sim/',
+    source: 'https://github.com/TanisJam/cold-humidity-sim',
+    screenshot: '/assets/projects/temp.png',
   },
-  {
-    icon: '/assets/logo.svg',
-    title: 'ETCH-A-SKETCH',
-    subtitle: 'ETCH-A-SKETCH Game with Extra Features',
-    description:
-      'ETCH-A-SKETCH game with some extra functionalities. Currently, it only works on desktop.',
-    techs: ['JavaScript'],
-    live: '#',
-    source: '#',
-    screenshot: '/assets/projects/nft.png',
-  },
+  // {
+  //   icon: '/assets/logo.svg',
+  //   title: 'ETCH-A-SKETCH',
+  //   subtitle: 'ETCH-A-SKETCH Game with Extra Features',
+  //   description:
+  //     'ETCH-A-SKETCH game with some extra functionalities. Currently, it only works on desktop.',
+  //   techs: ['JavaScript'],
+  //   live: 'https://tanisjam.github.io/etch-a-sketch/',
+  //   source: 'https://github.com/TanisJam/etch-a-sketch',
+  //   screenshot: '/assets/projects/EtchASketch.png',
+  // },
 ];
 ---
 
@@ -181,7 +181,14 @@ const projects = [
   <Divider />
   <Section title="I usually use">
     <div class="container mt-4 flex flex-wrap gap-2">
-      {TECHS.map((tech) => <Chip label={tech} />)}
+      {
+        TECHS.map((tech) => (
+          <Chip>
+            <Icon name={tech.logo} />
+            <span>{tech.name}</span>
+          </Chip>
+        ))
+      }
     </div>
   </Section>
   <Section title="Experience">
@@ -227,5 +234,5 @@ const projects = [
     }
   </Section>
   <Divider />
-  <Footer/>
+  <Footer />
 </Main>

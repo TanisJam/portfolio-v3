@@ -11,7 +11,7 @@ const { label, variant = 'primary', size = 'base' } = Astro.props;
   }}
   class="relative grid select-none items-center whitespace-nowrap rounded-lg font-sans font-bold hover:shadow-sm"
 >
-  <span class="">
-    {label}
+  <span class="flex items-center space-x-2">
+    {label ?  label : <slot />}
   </span>
 </div>
