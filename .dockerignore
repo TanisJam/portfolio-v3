@@ -1,0 +1,12 @@
+
+node_modules
+npm-debug.log
+yarn-error.log
+.vscode/
+.DS_Store
+Thumbs.db
+.prettierignore
+.prettierrc
+.cache/
+dist/
+build/

@@ -74,9 +74,9 @@ export const projects = [
     description:
       "This Discord bot is designed to assist a server that organizes roleplaying games. It allows users to access a list of useful commands, such as asking questions, retrieving character information, and rolling dice. The bot utilizes the discord.js library, TypeScript for implementation, and Gemini AI for enhanced interactions.",
     techs: ["JavaScript", "TypeScript", "Discord.js", "Gemini AI"],
-    live: "", // Replace with your repository link
-    source: "https://github.com/TanisJam/eradrin-bot", // Replace with your repository link
-    screenshot: "/assets/projects/bot.png", // Ensure you have an appropriate screenshot
+    live: "",
+    source: "https://github.com/TanisJam/eradrin-bot",
+    screenshot: "/assets/projects/bot.png",
   },
   // {
   //   icon: "superhero",
@@ -89,6 +89,17 @@ export const projects = [
   //   source: "https://github.com/TanisJam/sti",
   //   screenshot: "/assets/projects/sti.png",
   // },
+  {
+    icon: "cart-shopping",
+    title: "Shopping Cart Demo",
+    subtitle: "Simple E-commerce Shopping Cart Demo",
+    description:
+      "This is a simple demo of a shopping cart application that allows users to browse products by category, filter products, and search within categories. The cart is persistent in local.",
+    techs: ["React", "TypeScript", "Redux", "Vite", "Material UI"],
+    live: "https://first-cart-chi.vercel.app/",
+    source: "https://github.com/TanisJam/first-cart",
+    screenshot: "/assets/projects/shop.png",
+  },
   {
     icon: "blog",
     title: "Blog Management",
