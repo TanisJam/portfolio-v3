@@ -1,0 +1,73 @@
+---
+import Main from '@layouts/main.astro';
+import { PROJECTS, TECHS } from '../../data';
+---
+
+<Main
+  current="/projects"
+  pageLabel="Projects"
+  content={{
+    title: 'Projects',
+    description: 'Selected projects by Mauricio Romero.',
+  }}
+>
+  <div style="margin-bottom: 20px;">
+    <div class="label" style="margin-bottom: 6px;">Selected work</div>
+    <h1 class="page-title">THE PROJECTS</h1>
+    <div class="page-sub">apps, demos &amp; experiments</div>
+    <p class="lead" style="margin-top: 10px;">
+      A selection of things I have built — production work, side projects,
+      and the occasional experiment. Hover a card for details.
+    </p>
+  </div>
+
+  <div class="row row-2" style="margin-bottom: 26px;">
+    {
+      PROJECTS.map((p) => {
+        const href = p.live || p.source;
+        return (
+          <a
+            class="proj-card"
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={p.title}
+          >
+            <div class="proj-card__img" style={`background-image: url(${p.screenshot});`}></div>
+            <div class="proj-card__pills">
+              <span class={`pill pill--${p.accent}`}>{p.tag}</span>
+              <span class="pill pill--paper pill--sm">{p.title}</span>
+            </div>
+            <div class="proj-card__reveal">
+              <h3>{p.title}</h3>
+              <p>{p.description}</p>
+              <div class="techs">
+                {p.techs.map((t) => <span>{t}</span>)}
+              </div>
+              <div class="actions">
+                {p.live && (
+                  <a class="primary" href={p.live} target="_blank" rel="noreferrer">Live ↗</a>
+                )}
+                {p.source && (
+                  <a href={p.source} target="_blank" rel="noreferrer">Source</a>
+                )}
+              </div>
+            </div>
+          </a>
+        );
+      })
+    }
+  </div>
+
+  <section class="ink-card" style="margin-bottom: 0;">
+    <div class="ink-card__inner ink-card__inner--bordered">
+      <span style="position: absolute; top: 10px; right: 10px;">
+        <span class="pill pill--green">STACK</span>
+      </span>
+      <div class="display-heading" style="font-size: 44px; margin: 2px 0 12px;">BUILT WITH</div>
+      <div class="chip-row">
+        {TECHS.map((t) => <span class="chip chip--stack">{t.name}</span>)}
+      </div>
+    </div>
+  </section>
+</Main>

@@ -1,0 +1,15 @@
+---
+interface Props {
+  pageLabel?: string;
+  compact?: boolean;
+}
+
+const { pageLabel, compact = false } = Astro.props;
+---
+
+<div class={`masthead${compact ? ' masthead--compact' : ''}`}>
+  <span class="masthead__eyebrow">MNR</span>
+  {pageLabel && <span class="masthead__page">{pageLabel}</span>}
+  <h1 class="masthead__title">Mauricio</h1>
+  <div class="masthead__script">Romero</div>
+</div>

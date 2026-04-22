@@ -1,191 +1,212 @@
+export const SITE = {
+  title: 'Mauricio Romero',
+  description:
+    'Personal site of Mauricio Romero — software developer at Aerolab writing about frontend systems, internal tools, and practical web development.',
+  siteUrl: 'https://www.mnr.ar',
+  author: 'Mauricio Romero',
+  role: 'Software Developer at Aerolab',
+  email: 'mauricionromero@hotmail.com',
+  location: 'Argentina',
+  github: 'https://github.com/TanisJam',
+  linkedin: 'https://www.linkedin.com/in/mauricionromero/',
+  portfolio: 'https://www.mnr.ar',
+  resumePdf: '/resume/Profile.pdf',
+};
+
+export const HOME = {
+  eyebrow: 'Personal site',
+  title: 'Software, writing, and the systems behind good product work.',
+  intro:
+    'I am Mauricio Romero, a software developer currently working at Aerolab. I enjoy building practical interfaces, leading frontend-heavy initiatives, and documenting the ideas that make teams work better.',
+  summary:
+    'This site is now my personal hub: writing lives on the homepage and blog, while my professional profile has its own place in /resume.',
+  highlights: [
+    'Currently building internal systems at Aerolab',
+    'Helping teams across 40+ Endeavor offices access critical information',
+    'Working across frontend, internal tooling, and AI-assisted workflows',
+  ],
+};
+
+export const BIO = [
+  'I’m a software developer with experience in both frontend and backend, currently part of Aerolab. My recent work has focused on leading development for an internal system used by Endeavor staff across more than 40 offices worldwide.',
+  'Alongside implementation, I care about technical standards: code reviews, roadmap planning, estimations, and shaping workflows that help teams move with confidence.',
+  'Before fully moving into product development, I spent more than four years as an independent IT consultant, which gave me a strong foundation in troubleshooting, networking, hardware, and practical problem-solving.',
+];
+
+export const WRITING_TOPICS = [
+  'Frontend systems',
+  'Internal tools',
+  'AI-assisted workflows',
+  'Engineering process',
+  'Career notes',
+];
+
+export const SPECIALTIES = [
+  'TypeScript',
+  'React',
+  'Next.js',
+  'Tailwind CSS',
+  'Salesforce',
+  'Code reviews',
+  'Roadmap planning',
+  'Internal systems',
+];
+
+export const LANGUAGES = [
+  'Spanish — Native or bilingual',
+  'English — Professional working proficiency',
+];
+
+export const CERTIFICATIONS = [
+  'EF SET English Certificate — 72/100 (C2 Proficient)',
+  'Fundamentos de Scrum',
+  'Fundamentos de Bases de Datos',
+  'Experiencia en proyecto. Aceleración de Alkemy',
+];
+
+export const EDUCATION = [
+  'Universidad Nacional de Rosario (UNR) — Industrial Engineering, March 2014 to August 2016',
+];
+
 export const TECHS = [
-  { name: "Vite", logo: "vite" },
-  { name: "NextJS", logo: "nextjs" },
-  { name: "ReactJS", logo: "react" },
-  { name: "Tailwind CSS", logo: "tailwind" },
-  { name: "TypeScript", logo: "ts" },
-  { name: "Redux", logo: "redux" },
-  { name: "Sass", logo: "sass" },
-  { name: "CSS", logo: "css" },
-  { name: "HTML", logo: "html" },
-  { name: "JavaScript", logo: "js" },
-  { name: "Strapi", logo: "strapi" },
-  { name: "SQLite", logo: "sqlite" },
-  { name: "MongoDB", logo: "mongodb" },
-  { name: "Bootstrap", logo: "bootstrap" },
-  { name: "Styled-components", logo: "sc" },
-  { name: "Node", logo: "node" },
-  { name: "Docker", logo: "docker" },
-  { name: "Jest", logo: "jest" },
-  { name: "GitHub", logo: "github" },
-  { name: "Jira", logo: "jira" },
+  { name: 'Vite', logo: 'vite' },
+  { name: 'NextJS', logo: 'nextjs' },
+  { name: 'ReactJS', logo: 'react' },
+  { name: 'Tailwind CSS', logo: 'tailwind' },
+  { name: 'TypeScript', logo: 'ts' },
+  { name: 'Redux', logo: 'redux' },
+  { name: 'Sass', logo: 'sass' },
+  { name: 'CSS', logo: 'css' },
+  { name: 'HTML', logo: 'html' },
+  { name: 'JavaScript', logo: 'js' },
+  { name: 'Strapi', logo: 'strapi' },
+  { name: 'SQLite', logo: 'sqlite' },
+  { name: 'MongoDB', logo: 'mongodb' },
+  { name: 'Bootstrap', logo: 'bootstrap' },
+  { name: 'Styled-components', logo: 'sc' },
+  { name: 'Node', logo: 'node' },
+  { name: 'Docker', logo: 'docker' },
+  { name: 'Jest', logo: 'jest' },
+  { name: 'GitHub', logo: 'github' },
+  { name: 'Jira', logo: 'jira' },
 ];
 
 export const EXPERIENCE = [
   {
-    title: "IT consultant and Developer",
-    company: "Freelance",
-    image: "/assets/logo.svg",
-    date: "2021 - Present",
+    title: 'Software Developer',
+    company: 'Aerolab',
+    image: '/assets/logo.svg',
+    date: 'January 2025 - Present',
     description:
-      "Developing and maintaining web applications and IT consulting including, hardware, network components, security and basic architecture.",
+      'Leading development of an internal system for Endeavor.org so staff across 40+ offices can access critical information more efficiently. My role includes technical guidance, code reviews, roadmap planning, estimations, and introducing AI-assisted practices that improve quality and team knowledge sharing.',
   },
   {
-    title: "Frontend Developer",
-    company: "Viking Sasquatch",
-    link: "https://www.linkedin.com/company/viking-sasquatch/",
-    image: "/assets/VS.jpg",
-    date: "Dec 2022 - May 2024",
-    description: `
-      Contributed to building a mortgage and loan system using React, TailwindCSS, and TypeScript.
-      Optimized frontend performance and supported Vue migration.
-      Designed and implemented the UI for a PITI Calculator in React Native during a hackathon.
-    `,
+    title: 'IT Consultant',
+    company: 'Autónomo',
+    image: '/assets/logo.svg',
+    date: 'January 2021 - February 2025',
+    description:
+      'Worked independently across hardware troubleshooting, networking, security, and custom web development. I helped clients identify technical needs and translate them into practical hardware and software solutions.',
   },
   {
-    title: "Frontend Developer",
-    company: "FirstClose",
-    link: "https://www.linkedin.com/company/firstclose/",
-    image: "/assets/FC.jpg",
-    date: "Dec 2022 - Apr 2023 (Project)",
-    description: `
-      Enhanced UI for mortgage applications and migrated to ReactJS.
-      Improved functionality and worked closely with the team on design.
-    `,
+    title: 'Front End Developer',
+    company: 'Viking Sasquatch',
+    link: 'https://www.linkedin.com/company/viking-sasquatch/',
+    image: '/assets/VS.jpg',
+    date: 'December 2022 - May 2024',
+    description:
+      'Contributed to a mortgage and home equity loan platform using React, TailwindCSS, Redux, TypeScript, and Vite. Built reusable UI, connected frontend flows to backend services, supported migration work, and participated in a React Native hackathon project.',
   },
   {
-    title: "Frontend Developer",
-    company: "Esto Es",
-    link: "https://www.linkedin.com/company/estoes/posts/",
-    image: "/assets/estoes.jpg",
-    date: "Apr 2022 - Dec 2022",
-    description: `
-      Developed features for the Institutional Telecom site using Next.js and MaterialUI.
-      Led the migration from CodeIgniter to Next.js with a focus on SEO and performance through server-side rendering.
-    `,
+    title: 'Front End Developer',
+    company: 'FirstClose',
+    link: 'https://www.linkedin.com/company/firstclose/',
+    image: '/assets/FC.jpg',
+    date: 'December 2022 - April 2023',
+    description:
+      'Helped improve a web-based mortgage origination product by building visual components, implementing interactions, and supporting the migration toward ReactJS to improve functionality and performance.',
+  },
+  {
+    title: 'Frontend Developer',
+    company: 'Esto Es',
+    link: 'https://www.linkedin.com/company/estoes/posts/',
+    image: '/assets/estoes.jpg',
+    date: 'January 2022 - December 2022',
+    description:
+      'Built and maintained Telecom experiences with Next.js, Material UI, and Strapi. Contributed to a migration from CodeIgniter to Next.js, with strong focus on SSR, performance, modularity, and design-system oriented work.',
+  },
+  {
+    title: 'React Front-end Developer',
+    company: 'Alkemy',
+    image: '/assets/logo.svg',
+    date: 'October 2021 - December 2021',
+    description:
+      'Worked in a training contract building an NGO website with blog, landing pages, and back-office features while following Scrum methodology and collaborating in a group product environment.',
   },
 ];
 
-export const projects = [
+export const PROJECTS = [
   {
-    icon: "discord",
-    title: "Discord Roleplay Assistant Bot",
-    subtitle: "Roleplay Assistant Bot for Discord",
+    slug: 'eradrin-bot',
+    icon: 'discord',
+    title: 'Discord Roleplay Assistant Bot',
+    subtitle: 'Roleplay Assistant Bot for Discord',
     description:
-      "This Discord bot is designed to assist a server that organizes roleplaying games. It allows users to access a list of useful commands, such as asking questions, retrieving character information, and rolling dice. The bot utilizes the discord.js library, TypeScript for implementation, and Gemini AI for enhanced interactions.",
-    techs: ["JavaScript", "TypeScript", "Discord.js", "Gemini AI"],
-    live: "",
-    source: "https://github.com/TanisJam/eradrin-bot",
-    screenshot: "/assets/projects/bot.png",
-  },
-  // {
-  //   icon: "superhero",
-  //   title: "Superhero Team Inspector",
-  //   subtitle: "App to Create a Superhero Team",
-  //   description:
-  //     "This app allows you to create a fake superhero team to easily see their combined power stats. Credentials to access: Email: challenge@alkemy.org Password: react.",
-  //   techs: ["React", "CSS", "Redux"],
-  //   live: "https://sti.vercel.app/",
-  //   source: "https://github.com/TanisJam/sti",
-  //   screenshot: "/assets/projects/sti.png",
-  // },
-  {
-    icon: "cart-shopping",
-    title: "Shopping Cart Demo",
-    subtitle: "Simple E-commerce Shopping Cart Demo",
-    description:
-      "This is a simple demo of a shopping cart application that allows users to browse products by category, filter products, and search within categories. The cart is persistent in local.",
-    techs: ["React", "TypeScript", "Redux", "Vite", "Material UI"],
-    live: "https://first-cart-chi.vercel.app/",
-    source: "https://github.com/TanisJam/first-cart",
-    screenshot: "/assets/projects/shop.png",
+      'A Discord bot for a roleplaying server that answers questions, retrieves character information, and rolls dice using discord.js, TypeScript, and Gemini AI.',
+    techs: ['JavaScript', 'TypeScript', 'Discord.js', 'Gemini AI'],
+    live: '',
+    source: 'https://github.com/TanisJam/eradrin-bot',
+    screenshot: '/assets/projects/bot.png',
+    tag: 'TOOL',
+    accent: 'green',
   },
   {
-    icon: "crow",
-    title: "El Reposo Del Cuervo Landing Page",
-    subtitle: "Landing Page for a D&D Discord Server",
+    slug: 'shopping-cart',
+    icon: 'cart-shopping',
+    title: 'Shopping Cart Demo',
+    subtitle: 'Simple E-commerce Shopping Cart Demo',
     description:
-      "El Reposo Del Cuervo is the name of a Discord server that organizes and runs D&D sessions. To promote the server, I've created a landing page that includes information about the server, its rules, and how to join. The page is designed to be visually appealing and user-friendly. This project is built with Next.js, TypeScript, and Tailwind CSS.",
-    techs: ["Next.js", "TypeScript", "Tailwind CSS", "DaisyUI"],
-    live: "https://elreposodelcuervo.mnr.ar/",
-    source: "https://github.com/TanisJam/reposo",
-    screenshot: "/assets/projects/reposo.png",
+      'A demo shopping cart application that allows browsing products by category, filtering products, and searching within categories, with persistent cart state.',
+    techs: ['React', 'TypeScript', 'Redux', 'Vite', 'Material UI'],
+    live: 'https://first-cart-chi.vercel.app/',
+    source: 'https://github.com/TanisJam/first-cart',
+    screenshot: '/assets/projects/shop.png',
+    tag: 'APP',
+    accent: 'coral',
   },
-  // {
-  //   icon: "blog",
-  //   title: "Blog Management",
-  //   subtitle: "Blog Management App",
-  //   description:
-  //     "This is a simple blog management app. It allows you to create, edit, and delete posts. It uses React, Redux, and a {JSON} Placeholder fake endpoint.",
-  //   techs: ["React", "Redux", "Bootstrap"],
-  //   live: "https://blogment.vercel.app/",
-  //   source: "https://github.com/TanisJam/almemy-warm-up",
-  //   screenshot: "/assets/projects/blog.png",
-  // },
-  // {
-  //   icon: "trivia",
-  //   title: "Trivia",
-  //   subtitle: "Trivia Game",
-  //   description:
-  //     "As part of the Evuca project, we were tasked with creating a website to apply the knowledge acquired so far. This strengthened our use of HTML, CSS, and JavaScript. We used Webpack, Git, and Less in this project. It is a simple trivia game with achievements.",
-  //   techs: ["HTML", "CSS", "JavaScript", "Webpack", "Git", "Less"],
-  //   live: "https://trivia15dias.vercel.app/",
-  //   source: "https://github.com/TanisJam/trivia15dias",
-  //   screenshot: "/assets/projects/trivia.png",
-  // },
   {
-    icon: "nft",
-    title: "Hero NFT",
-    subtitle: "Demo Landing Page for NFT Transactions",
+    slug: 'reposo',
+    icon: 'crow',
+    title: 'El Reposo Del Cuervo Landing Page',
+    subtitle: 'Landing Page for a D&D Discord Server',
     description:
-      "Landing page for NFT transactions. This was created as a demo using NextJs and Sass.",
-    techs: ["NextJs", "Sass", "Eslint"],
-    live: "https://hero-nft.vercel.app/",
-    source: "https://github.com/TanisJam/hero-page-nft",
-    screenshot: "/assets/projects/nft.png",
+      'A landing page for a D&D community, built to explain the server, its rules, and how to join, using Next.js, TypeScript, and Tailwind CSS.',
+    techs: ['Next.js', 'TypeScript', 'Tailwind CSS', 'DaisyUI'],
+    live: 'https://elreposodelcuervo.mnr.ar/',
+    source: 'https://github.com/TanisJam/reposo',
+    screenshot: '/assets/projects/reposo.png',
+    tag: 'SITE',
+    accent: 'pink',
   },
-  // {
-  //   icon: '/assets/logo.svg',
-  //   title: 'SuperMarket',
-  //   subtitle: 'E-Commerce App',
-  //   description:
-  //     'This is a simple e-commerce app. You can add products to your cart and checkout. It uses React, Redux, Bootstrap, and Firebase as the database.',
-  //   techs: ['React', 'Redux', 'Bootstrap', 'Firebase'],
-  //   live: 'https://super-evuca.vercel.app/',
-  //   source: 'https://github.com/TanisJam/superCualquiera',
-  //   screenshot: '/assets/projects/super.png',
-  // },
-  // {
-  //   icon: "rain",
-  //   title: "Its Raining",
-  //   subtitle: "React-Based Weather Seeker",
-  //   description:
-  //     "React-based weather seeker. It consumes a free OpenWeatherMap API. I used CreateReactApp, React Router, and Styled Components.",
-  //   techs: ["React", "CreateReactApp", "React Router", "Styled Components"],
-  //   live: "https://its-raining.vercel.app/",
-  //   source: "https://github.com/TanisJam/its-raining",
-  //   screenshot: "/assets/projects/weather.png",
-  // },
-  // {
-  //   icon: "humidity",
-  //   title: "Temperature and Humidity Simulator",
-  //   subtitle: "Temperature and Humidity Simulation",
-  //   description:
-  //     "A scienceless simulation of how temperature and humidity affect a bunch of computer-generated slimes. My initial thoughts for this project were to practice with Objects and Classes, but I also learned about physics and how to manipulate CSS variables.",
-  //   techs: ["JavaScript", "CSS"],
-  //   live: "https://tanisjam.github.io/cold-humidity-sim/",
-  //   source: "https://github.com/TanisJam/cold-humidity-sim",
-  //   screenshot: "/assets/projects/temp.png",
-  // },
-  // {
-  //   icon: '/assets/logo.svg',
-  //   title: 'ETCH-A-SKETCH',
-  //   subtitle: 'ETCH-A-SKETCH Game with Extra Features',
-  //   description:
-  //     'ETCH-A-SKETCH game with some extra functionalities. Currently, it only works on desktop.',
-  //   techs: ['JavaScript'],
-  //   live: 'https://tanisjam.github.io/etch-a-sketch/',
-  //   source: 'https://github.com/TanisJam/etch-a-sketch',
-  //   screenshot: '/assets/projects/EtchASketch.png',
-  // },
+  {
+    slug: 'hero-nft',
+    icon: 'nft',
+    title: 'Hero NFT',
+    subtitle: 'Demo Landing Page for NFT Transactions',
+    description:
+      'A demo landing page for NFT-related transactions created with Next.js and Sass.',
+    techs: ['NextJS', 'Sass', 'ESLint'],
+    live: 'https://hero-nft.vercel.app/',
+    source: 'https://github.com/TanisJam/hero-page-nft',
+    screenshot: '/assets/projects/nft.png',
+    tag: 'DEMO',
+    accent: 'green',
+  },
+];
+
+export const NAVIGATION = [
+  { href: '/', label: 'Home' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/resume', label: 'Resume' },
 ];

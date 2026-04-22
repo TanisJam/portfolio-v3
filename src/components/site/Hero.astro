@@ -1,0 +1,41 @@
+---
+import { HOME, SITE } from '../../data';
+---
+
+<section class="grid gap-8 md:grid-cols-[1.6fr_1fr] md:items-center">
+  <div>
+    <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-retro_red">
+      {HOME.eyebrow}
+    </p>
+    <h1 class="max-w-3xl text-4xl font-bold leading-tight text-retro_dark md:text-6xl">
+      {HOME.title}
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-retro_dark/80 md:text-xl">
+      {HOME.intro}
+    </p>
+    <p class="mt-3 max-w-2xl text-base leading-relaxed text-retro_dark/70">
+      {HOME.summary}
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="/blog" class="rounded-full bg-retro_blue px-5 py-2.5 font-medium text-white transition hover:opacity-90">
+        Read the blog
+      </a>
+      <a href="/resume" class="rounded-full border border-retro_dark/20 px-5 py-2.5 font-medium text-retro_dark transition hover:bg-retro_light/30">
+        View resume
+      </a>
+    </div>
+  </div>
+
+  <aside class="rounded-3xl border border-retro_dark/10 bg-white/30 p-6 shadow-sm backdrop-blur-sm">
+    <img
+      class="mb-4 h-24 w-24 rounded-full object-cover shadow-md shadow-retro_blue/20"
+      src="/assets/images/mnr_photo.jpg"
+      alt={`${SITE.author} portrait`}
+    />
+    <p class="text-xl font-semibold text-retro_dark">{SITE.author}</p>
+    <p class="mt-1 text-retro_dark/75">{SITE.role}</p>
+    <ul class="mt-4 space-y-3 text-sm leading-relaxed text-retro_dark/70">
+      {HOME.highlights.map((item) => <li class="flex gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-retro_red"></span><span>{item}</span></li>)}
+    </ul>
+  </aside>
+</section>
