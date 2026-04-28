@@ -10,7 +10,7 @@ export const SITE = {
   github: 'https://github.com/TanisJam',
   linkedin: 'https://www.linkedin.com/in/mauricionromero/',
   portfolio: 'https://www.mnr.ar',
-  resumePdf: '/resume/Profile.pdf',
+  resumePdf: '/resume/Mauricio_cv.pdf',
 };
 
 export const HOME = {
