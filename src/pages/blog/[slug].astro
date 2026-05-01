@@ -27,7 +27,7 @@ const fmtDate = (d: Date) =>
       <a class="link-underline" href="/blog">← All posts</a>
     </div>
     <div class="label" style="margin-bottom: 6px;">{fmtDate(post.data.publishedAt)}</div>
-    <h1 class="page-title" style="font-size: 56px;">{post.data.title}</h1>
+    <h1 class="page-title" style="font-size: clamp(38px, 10vw, 56px);">{post.data.title}</h1>
     <p class="lead" style="margin-top: 10px;">{post.data.description}</p>
     <div style="display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 28px;">
       {post.data.tags.map((t: string) => <span class="pill pill--paper pill--sm">#{t}</span>)}

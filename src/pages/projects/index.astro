@@ -17,7 +17,8 @@ import { PROJECTS, TECHS } from '../../data';
     <div class="page-sub">apps, demos &amp; experiments</div>
     <p class="lead" style="margin-top: 10px;">
       A selection of things I have built — production work, side projects,
-      and the occasional experiment. Hover a card for details.
+      and the occasional experiment. Each card includes the context, stack,
+      and links to the live version or source code.
     </p>
   </div>
 
@@ -26,21 +27,26 @@ import { PROJECTS, TECHS } from '../../data';
       PROJECTS.map((p) => {
         const href = p.live || p.source;
         return (
-          <a
-            class="proj-card"
-            href={href}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={p.title}
-          >
-            <div class="proj-card__img" style={`background-image: url(${p.screenshot});`}></div>
-            <div class="proj-card__pills">
-              <span class={`pill pill--${p.accent}`}>{p.tag}</span>
-              <span class="pill pill--paper pill--sm">{p.title}</span>
-            </div>
+          <article class="proj-card">
+            <a
+              class="proj-card__media"
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Open ${p.title}`}
+            >
+              <div class="proj-card__img" style={`background-image: url(${p.screenshot});`}></div>
+              <div class="proj-card__pills">
+                <span class={`pill pill--${p.accent}`}>{p.tag}</span>
+                <span class="pill pill--paper pill--sm">{p.title}</span>
+              </div>
+            </a>
             <div class="proj-card__reveal">
-              <h3>{p.title}</h3>
-              <p>{p.description}</p>
+              <div>
+                <h3>{p.title}</h3>
+                <p class="proj-card__subtitle">{p.subtitle}</p>
+                <p>{p.description}</p>
+              </div>
               <div class="techs">
                 {p.techs.map((t) => <span>{t}</span>)}
               </div>
@@ -53,7 +59,7 @@ import { PROJECTS, TECHS } from '../../data';
                 )}
               </div>
             </div>
-          </a>
+          </article>
         );
       })
     }

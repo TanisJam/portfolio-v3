@@ -15,13 +15,13 @@ const fmtDate = (d: Date) =>
 
 <Main current="/" pageLabel="Home" content={{ title: 'Home', description: SITE.description }}>
   <div class="tiles">
-    <div class="tile t-c4 t-r3 tile--plain">
+    <div class="tile t-c4 t-r3 tile--plain home-hero-card">
       <div>
         <div class="t-label">{HOME.eyebrow}</div>
         <h3 class="t-title" style="margin-top: 6px; font-size: 22px;">Hello, I'm Mauricio</h3>
       </div>
-      <p class="t-big" style="font-size: 42px; line-height: .95;">SOFTWARE,<br/>WRITING, &amp; THE<br/>SYSTEMS BEHIND IT.</p>
-      <p class="t-body" style="opacity: .8; font-size: 13px;">{HOME.intro}</p>
+      <p class="t-big home-hero-card__headline" style="font-size: 42px; line-height: .95;">SOFTWARE,<br/>WRITING, &amp; THE<br/>SYSTEMS BEHIND IT.</p>
+      <p class="t-body home-hero-card__body" style="opacity: .8; font-size: 13px;">{HOME.intro}</p>
     </div>
 
     <a href="/resume" class="tile t-c2 t-r3 tile--img tile--link" aria-label="Read full resume"
@@ -82,13 +82,13 @@ const fmtDate = (d: Date) =>
       <p class="t-body" style="font-size: 12px; opacity: .9;">{HOME.highlights[0]}</p>
     </div>
 
-    <div class="tile t-c2 t-r2 tile--coral">
+    <div class="tile t-c2 t-r2 tile--coral home-scale-card">
       <div class="t-label">Scale</div>
       <p class="t-body" style="font-size: 13px; font-weight: 700; line-height: 1.45;">{HOME.highlights[1]}</p>
     </div>
 
-    <div class="tile t-c1 t-r2 tile--green" style="align-items: center; justify-content: center; padding: 10px;">
-      <p class="t-big" style="font-size: 18px; writing-mode: vertical-rl; transform: rotate(180deg); margin: 0; letter-spacing: .05em;">WORKFLOWS</p>
+    <div class="tile t-c1 t-r2 tile--green home-vertical-card" style="align-items: center; justify-content: center; padding: 10px;">
+      <p class="t-big home-vertical-card__text" style="font-size: 18px; writing-mode: vertical-rl; transform: rotate(180deg); margin: 0; letter-spacing: .05em;">WORKFLOWS</p>
     </div>
 
     <div class="tile t-c4 t-r1 tile--plain tile--flat" style="flex-direction: row; align-items: center; justify-content: space-between;">
@@ -154,8 +154,8 @@ const fmtDate = (d: Date) =>
       <p class="t-body" style="font-size: 13px; line-height: 1.5; margin: 0;">{BIO[2]}</p>
     </div>
 
-    <div class="tile t-c1 t-r2 tile--green" style="align-items: center; justify-content: center; padding: 8px;" aria-hidden="true">
-      <p class="t-big" style="font-size: 16px; writing-mode: vertical-rl; transform: rotate(180deg); margin: 0; letter-spacing: .08em;">BIO</p>
+    <div class="tile t-c1 t-r2 tile--green home-vertical-card" style="align-items: center; justify-content: center; padding: 8px;" aria-hidden="true">
+      <p class="t-big home-vertical-card__text" style="font-size: 16px; writing-mode: vertical-rl; transform: rotate(180deg); margin: 0; letter-spacing: .08em;">BIO</p>
     </div>
 
     <div class="tile t-c2 t-r2 tile--ink" style="justify-content: flex-start; gap: 10px;">
