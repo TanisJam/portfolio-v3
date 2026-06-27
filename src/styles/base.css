@@ -884,10 +884,7 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
   display: flex;
   flex-direction: column;
   color: inherit;
-  transition: transform .14s ease-out, box-shadow .14s ease-out;
 }
-.proj-card:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 1px var(--c-dark); }
-.proj-card:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 1px var(--c-dark); }
 .proj-card__media {
   position: relative;
   display: block;
@@ -904,7 +901,7 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
   display: block;
   transition: transform .28s ease-out, filter .25s ease-out;
 }
-.proj-card:hover .proj-card__img { transform: scale(1.05); filter: brightness(.92); }
+.proj-card__media:hover .proj-card__img { transform: scale(1.05); filter: brightness(.92); }
 .proj-card__pills {
   position: absolute; top: 0; left: 0;
   display: flex; flex-direction: column; align-items: flex-start;
@@ -1252,7 +1249,7 @@ button:focus-visible {
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
-  .proj-card:hover .proj-card__img {
+  .proj-card__media:hover .proj-card__img {
     transform: none !important;
   }
 }
