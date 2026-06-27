@@ -25,8 +25,10 @@ import { PROJECTS_ES } from '../../../data.es';
 
   <div class="row row-2" style="margin-bottom: 26px;">
     {
-      PROJECTS_ES.map((p) => {
+      PROJECTS_ES.map((p, i) => {
         const href = p.live || p.source;
+        const idx = String(i + 1).padStart(2, '0');
+        const status = p.live ? 'LIVE' : 'CÓDIGO';
         return (
           <article class="proj-card">
             <a
@@ -51,6 +53,10 @@ import { PROJECTS_ES } from '../../../data.es';
             </a>
             <div class="proj-card__reveal">
               <div>
+                <div class="proj-card__spec">
+                  <span class="proj-card__index">{idx}</span>
+                  <span class="proj-card__code">MNR-{idx} · {status}</span>
+                </div>
                 <h2>{p.title}</h2>
                 <p class="proj-card__subtitle">{p.subtitle}</p>
                 <p>{p.description}</p>

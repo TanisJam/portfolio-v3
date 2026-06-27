@@ -103,6 +103,7 @@
   --font-serif:   "Kreon", "Kreon Fallback", Georgia, serif;       /* section titles + pill labels */
   --font-sans:    "Biryani", "Biryani Fallback", system-ui, sans-serif; /* body copy */
   --font-script:  "Nothing You Could Do", "Nothing You Could Do Fallback", cursive; /* handwritten tagline */
+  --font-mono:    ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace; /* technical data labels */
 
   /* ---------- SEMANTIC TYPE VARS ---------- */
   /* Hero mastheads — giant slab */
@@ -917,6 +918,32 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
   gap: 12px;
   background: var(--c-light);
   flex: 1;
+}
+.proj-card__spec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 1.5px dashed var(--c-dark);
+}
+.proj-card__index {
+  font-family: var(--font-serif);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: .8;
+  color: var(--c-dark);
+}
+.proj-card__code {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--c-dark);
+  opacity: .6;
+  white-space: nowrap;
 }
 .proj-card__reveal h2 {
   font-family: var(--font-serif);
