@@ -886,7 +886,8 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
   color: inherit;
   transition: transform .14s ease-out, box-shadow .14s ease-out;
 }
-.proj-card:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 1px var(--c-dark); }
+.proj-card:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 1px var(--c-dark); }
+.proj-card:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 1px var(--c-dark); }
 .proj-card__media {
   position: relative;
   display: block;
@@ -894,13 +895,16 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
   overflow: hidden;
   background: var(--c-dark);
 }
+.proj-card__media:focus-visible { outline-offset: -3px; }
 .proj-card__img {
   position: absolute; inset: 0;
-  background-size: cover;
-  background-position: center top;
-  transition: transform .4s ease-out, filter .3s ease-out;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform .28s ease-out, filter .25s ease-out;
 }
-.proj-card:hover .proj-card__img { transform: scale(1.04); filter: brightness(.82); }
+.proj-card:hover .proj-card__img { transform: scale(1.05); filter: brightness(.92); }
 .proj-card__pills {
   position: absolute; top: 0; left: 0;
   display: flex; flex-direction: column; align-items: flex-start;
@@ -917,9 +921,10 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
   background: var(--c-light);
   flex: 1;
 }
-.proj-card__reveal h3 {
+.proj-card__reveal h2 {
   font-family: var(--font-serif);
   font-size: 22px;
+  font-weight: 600;
   text-transform: uppercase;
   margin: 0 0 6px;
   color: var(--c-dark);
@@ -963,7 +968,11 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
   border: 2px solid var(--c-dark);
   text-decoration: none;
   border-radius: 3px;
+  box-shadow: 2px 2px 0 0 var(--c-dark);
+  transition: transform .12s ease-out, box-shadow .12s ease-out;
 }
+.proj-card__reveal .actions a:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 0 var(--c-dark); }
+.proj-card__reveal .actions a:active { transform: translate(2px,2px); box-shadow: none; }
 .proj-card__reveal .actions a.primary { background: var(--c-secondary); color: var(--c-light); border-color: var(--c-dark); }
 
 /* ---------- experience cards (resume) ---------- */
@@ -1224,5 +1233,26 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
     bottom: 68px;
     min-width: 0;
     max-width: min(220px, calc(100vw - 28px));
+  }
+}
+
+/* ---------- interaction states ---------- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--c-secondary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .proj-card:hover .proj-card__img {
+    transform: none !important;
   }
 }
