@@ -1128,7 +1128,7 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
 }
 .article ul, .article ol { padding-left: 1.25rem; margin: 0 0 16px; }
 .article li + li { margin-top: 4px; }
-.article a {
+.article a:not(.stamp-btn) {
   color: var(--c-secondary);
   text-decoration: underline;
   text-underline-offset: 3px;
