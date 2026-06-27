@@ -36,15 +36,22 @@ import { PROJECTS_ES } from '../../../data.es';
               rel="noreferrer"
               aria-label={`Abrir ${p.title}`}
             >
-              <div class="proj-card__img" style={`background-image: url(${p.screenshot});`}></div>
+              <img
+                class="proj-card__img"
+                src={p.screenshot}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="600"
+              />
               <div class="proj-card__pills">
                 <span class={`pill pill--${p.accent}`}>{p.tag}</span>
-                <span class="pill pill--paper pill--sm">{p.title}</span>
               </div>
             </a>
             <div class="proj-card__reveal">
               <div>
-                <h3>{p.title}</h3>
+                <h2>{p.title}</h2>
                 <p class="proj-card__subtitle">{p.subtitle}</p>
                 <p>{p.description}</p>
               </div>
