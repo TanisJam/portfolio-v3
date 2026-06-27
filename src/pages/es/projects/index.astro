@@ -30,7 +30,7 @@ import { PROJECTS_ES } from '../../../data.es';
         const idx = String(i + 1).padStart(2, '0');
         const status = p.live ? 'LIVE' : 'CÓDIGO';
         return (
-          <article class="proj-card">
+          <article class={i === 0 ? 'proj-card proj-card--wide' : 'proj-card'}>
             <a
               class="proj-card__media"
               href={href}
@@ -82,7 +82,7 @@ import { PROJECTS_ES } from '../../../data.es';
   <section class="ink-card" style="margin-bottom: 0;">
     <div class="ink-card__inner ink-card__inner--bordered">
       <span style="position: absolute; top: 10px; right: 10px;">
-        <span class="pill pill--green">STACK</span>
+        <span class="pill pill--amber">STACK</span>
       </span>
       <div class="display-heading" style="font-size: 44px; margin: 2px 0 12px;">HECHO CON</div>
       <div class="chip-row">

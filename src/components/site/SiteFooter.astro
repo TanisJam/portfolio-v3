@@ -7,16 +7,23 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const year = String(new Date().getFullYear()).split('').join(' ');
+const now = new Date().getFullYear();
+const year = String(now).split('').join(' ');
 ---
 
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <span>© {year}  ·  M a u r i c i o  R o m e r o  ·  🍊</span>
-    <span style="display: flex; gap: 14px; align-items: center;">
-      <a href={SITE.github} target="_blank" rel="noreferrer">github</a>
-      <a href={SITE.linkedin} target="_blank" rel="noreferrer">linkedin</a>
-      <a href={`mailto:${SITE.email}`}>{CHROME_COPY[lang].footerEmail}</a>
-    </span>
+    <div class="site-footer__row">
+      <span>© {year}  ·  M a u r i c i o  R o m e r o  ·  🍊</span>
+      <span class="site-footer__links">
+        <a href={SITE.github} target="_blank" rel="noreferrer">github</a>
+        <a href={SITE.linkedin} target="_blank" rel="noreferrer">linkedin</a>
+        <a href={`mailto:${SITE.email}`}>{CHROME_COPY[lang].footerEmail}</a>
+      </span>
+    </div>
+    <div class="site-footer__stamp">
+      <span class="site-footer__barcode" aria-hidden="true"></span>
+      <span class="site-footer__code">MNR · PERSONAL SITE · BUILD {now}</span>
+    </div>
   </div>
 </footer>

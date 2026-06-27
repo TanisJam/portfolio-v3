@@ -45,15 +45,15 @@ const fmtDate = (d: Date) =>
 
   <div id="posts" style="display: grid; gap: 16px; margin-bottom: 10px;">
     {
-      posts.map((p) => (
+      posts.map((p, i) => (
         <a
           class="post-card"
           href={`/blog/${p.slug}/`}
           data-tags={p.data.tags.join(' ')}
         >
           <div class="post-head">
-            <span class="post-date">{fmtDate(p.data.publishedAt)}</span>
-            {p.data.featured && <span class="pill pill--green pill--sm">Featured</span>}
+            <span class="post-date">LOG-{String(i + 1).padStart(2, '0')} · {fmtDate(p.data.publishedAt)}</span>
+            {p.data.featured && <span class="pill pill--amber pill--sm">Featured</span>}
           </div>
           <h3>{p.data.title}</h3>
           <p>{p.data.description}</p>
