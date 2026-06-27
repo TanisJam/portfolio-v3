@@ -26,3 +26,7 @@ pnpm-debug.log*
 .playwright/
 .playwright-cli/
 .claude/
+
+# local tooling artifacts
+.atl/
+.peel.yml
