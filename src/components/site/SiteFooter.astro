@@ -7,11 +7,12 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+const year = String(new Date().getFullYear()).split('').join(' ');
 ---
 
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <span>© 2 0 2 6  ·  M a u r i c i o  R o m e r o  ·  🍊</span>
+    <span>© {year}  ·  M a u r i c i o  R o m e r o  ·  🍊</span>
     <span style="display: flex; gap: 14px; align-items: center;">
       <a href={SITE.github} target="_blank" rel="noreferrer">github</a>
       <a href={SITE.linkedin} target="_blank" rel="noreferrer">linkedin</a>

@@ -5,9 +5,8 @@
    ============================================================ */
 
 /* ---------- FONTS ----------
-   Kreon is bundled locally (variable font, weight 400–700).
-   Ultra, Biryani, Nothing You Could Do still load from Google Fonts
-   — request local .ttf files to bundle those too.
+   All families are bundled locally and served from /fonts:
+   Kreon (variable, 400–700), Biryani, Ultra, Nothing You Could Do.
 */
 @font-face {
   font-family: "Kreon";

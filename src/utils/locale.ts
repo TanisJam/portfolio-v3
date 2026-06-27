@@ -11,7 +11,7 @@ export const CHROME_COPY = {
     ],
     footerEmail: 'email',
     switchLabel: 'ES',
-    switchAria: 'Cambiar a español',
+    switchAria: 'Switch to Spanish',
   },
   es: {
     navLabel: 'Principal',
@@ -23,7 +23,7 @@ export const CHROME_COPY = {
     ],
     footerEmail: 'correo',
     switchLabel: 'EN',
-    switchAria: 'Switch to English',
+    switchAria: 'Cambiar a inglés',
   },
 } as const;
 
