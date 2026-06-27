@@ -1,15 +1,23 @@
 ---
+import { CHROME_COPY, getAlternateLanguagePath, type Lang } from '@utils/locale';
+
 interface Props {
-  pageLabel?: string;
+  lang: Lang;
+  currentPath: string;
   compact?: boolean;
 }
 
-const { pageLabel, compact = false } = Astro.props;
+const { lang, currentPath, compact = false } = Astro.props;
+const switchHref = getAlternateLanguagePath(currentPath, lang);
+const switchText = CHROME_COPY[lang].switchLabel;
+const switchAria = CHROME_COPY[lang].switchAria;
 ---
 
 <div class={`masthead${compact ? ' masthead--compact' : ''}`}>
   <span class="masthead__eyebrow">MNR</span>
-  {pageLabel && <span class="masthead__page">{pageLabel}</span>}
+  <a href={switchHref} class="masthead__page" aria-label={switchAria}>
+    {switchText}
+  </a>
   <h1 class="masthead__title">Mauricio</h1>
   <div class="masthead__script">Romero</div>
 </div>

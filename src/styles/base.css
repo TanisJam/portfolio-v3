@@ -371,6 +371,7 @@ hr.divider {
   padding: 5px 10px 4px;
   text-transform: uppercase;
   letter-spacing: .05em;
+  text-decoration: none;
 }
 .masthead__title {
   margin: 0;

@@ -1,5 +1,12 @@
 ---
 import { SITE } from '../../data';
+import { CHROME_COPY, type Lang } from '@utils/locale';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
 ---
 
 <footer class="site-footer">
@@ -8,7 +15,7 @@ import { SITE } from '../../data';
     <span style="display: flex; gap: 14px; align-items: center;">
       <a href={SITE.github} target="_blank" rel="noreferrer">github</a>
       <a href={SITE.linkedin} target="_blank" rel="noreferrer">linkedin</a>
-      <a href={`mailto:${SITE.email}`}>email</a>
+      <a href={`mailto:${SITE.email}`}>{CHROME_COPY[lang].footerEmail}</a>
     </span>
   </div>
 </footer>

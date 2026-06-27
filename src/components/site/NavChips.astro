@@ -1,11 +1,13 @@
 ---
-import { NAVIGATION } from '../../data';
+import { CHROME_COPY, localizePath, type Lang } from '@utils/locale';
 
 interface Props {
   current: string;
+  lang: Lang;
 }
 
-const { current } = Astro.props;
+const { current, lang } = Astro.props;
+const navigation = CHROME_COPY[lang].nav;
 
 const NAV_ICONS: Record<string, string> = {
   '/': 'crow',
@@ -15,13 +17,13 @@ const NAV_ICONS: Record<string, string> = {
 };
 ---
 
-<nav class="nav-chips" aria-label="Primary">
+<nav class="nav-chips" aria-label={CHROME_COPY[lang].navLabel}>
   {
-    NAVIGATION.map((n) => {
+    navigation.map((n) => {
       const icon = NAV_ICONS[n.href];
       const isCurrent = current === n.href;
       return (
-        <a href={n.href} class="nav-chip" aria-current={isCurrent ? 'page' : undefined}>
+        <a href={localizePath(n.href, lang)} class="nav-chip" aria-current={isCurrent ? 'page' : undefined}>
           {icon === 'crow' && (
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M3 14c1.5-3 4-5 7.5-5.5 2-2 4.5-2 6.5 0 1 0 2 .5 2.5 1.5L21 12l-2 2 .5 3-3-.5-2 2H9c-3 0-5-1-6-4Z" stroke="currentColor" stroke-width="1.8"/>

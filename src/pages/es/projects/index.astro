@@ -1,30 +1,31 @@
 ---
 import Main from '@layouts/main.astro';
-import { PROJECTS, TECHS } from '../../data';
+import { TECHS } from '../../../data';
+import { PROJECTS_ES } from '../../../data.es';
 ---
 
 <Main
   current="/projects"
-  lang="en"
+  lang="es"
   content={{
-    title: 'Projects',
-    description: 'Selected projects by Mauricio Romero.',
+    title: 'Proyectos',
+    description: 'Proyectos seleccionados de Mauricio Romero.',
   }}
 >
   <div style="margin-bottom: 20px;">
-    <div class="label" style="margin-bottom: 6px;">Selected work</div>
-    <h1 class="page-title">THE PROJECTS</h1>
-    <div class="page-sub">apps, demos &amp; experiments</div>
+    <div class="label" style="margin-bottom: 6px;">Trabajo seleccionado</div>
+    <h1 class="page-title">PROYECTOS</h1>
+    <div class="page-sub">apps, demos y experimentos</div>
     <p class="lead" style="margin-top: 10px;">
-      A selection of things I have built — production work, side projects,
-      and the occasional experiment. Each card includes the context, stack,
-      and links to the live version or source code.
+      Una selección de cosas que construí: trabajo de producción, side projects
+      y algún experimento ocasional. Cada card incluye contexto, stack y links
+      a la demo o al código fuente.
     </p>
   </div>
 
   <div class="row row-2" style="margin-bottom: 26px;">
     {
-      PROJECTS.map((p) => {
+      PROJECTS_ES.map((p) => {
         const href = p.live || p.source;
         return (
           <article class="proj-card">
@@ -33,7 +34,7 @@ import { PROJECTS, TECHS } from '../../data';
               href={href}
               target="_blank"
               rel="noreferrer"
-              aria-label={`Open ${p.title}`}
+              aria-label={`Abrir ${p.title}`}
             >
               <div class="proj-card__img" style={`background-image: url(${p.screenshot});`}></div>
               <div class="proj-card__pills">
@@ -52,10 +53,10 @@ import { PROJECTS, TECHS } from '../../data';
               </div>
               <div class="actions">
                 {p.live && (
-                  <a class="primary" href={p.live} target="_blank" rel="noreferrer">Live ↗</a>
+                  <a class="primary" href={p.live} target="_blank" rel="noreferrer">Demo ↗</a>
                 )}
                 {p.source && (
-                  <a href={p.source} target="_blank" rel="noreferrer">Source</a>
+                  <a href={p.source} target="_blank" rel="noreferrer">Código</a>
                 )}
               </div>
             </div>
@@ -70,7 +71,7 @@ import { PROJECTS, TECHS } from '../../data';
       <span style="position: absolute; top: 10px; right: 10px;">
         <span class="pill pill--green">STACK</span>
       </span>
-      <div class="display-heading" style="font-size: 44px; margin: 2px 0 12px;">BUILT WITH</div>
+      <div class="display-heading" style="font-size: 44px; margin: 2px 0 12px;">HECHO CON</div>
       <div class="chip-row">
         {TECHS.map((t) => <span class="chip chip--stack">{t.name}</span>)}
       </div>
