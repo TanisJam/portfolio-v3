@@ -25,12 +25,10 @@ import { PROJECTS_ES } from '../../../data.es';
 
   <div class="row row-2" style="margin-bottom: 26px;">
     {
-      PROJECTS_ES.map((p, i) => {
+      PROJECTS_ES.map((p) => {
         const href = p.live || p.source;
-        const idx = String(i + 1).padStart(2, '0');
-        const status = p.live ? 'LIVE' : 'CÓDIGO';
         return (
-          <article class={i === 0 ? 'proj-card proj-card--wide' : 'proj-card'}>
+          <article class="proj-card">
             <a
               class="proj-card__media"
               href={href}
@@ -53,10 +51,6 @@ import { PROJECTS_ES } from '../../../data.es';
             </a>
             <div class="proj-card__reveal">
               <div>
-                <div class="proj-card__spec">
-                  <span class="proj-card__index">{idx}</span>
-                  <span class="proj-card__code">MNR-{idx} · {status}</span>
-                </div>
                 <h2>{p.title}</h2>
                 <p class="proj-card__subtitle">{p.subtitle}</p>
                 <p>{p.description}</p>
@@ -82,7 +76,7 @@ import { PROJECTS_ES } from '../../../data.es';
   <section class="ink-card" style="margin-bottom: 0;">
     <div class="ink-card__inner ink-card__inner--bordered">
       <span style="position: absolute; top: 10px; right: 10px;">
-        <span class="pill pill--amber">STACK</span>
+        <span class="pill pill--green">STACK</span>
       </span>
       <div class="display-heading" style="font-size: 44px; margin: 2px 0 12px;">HECHO CON</div>
       <div class="chip-row">

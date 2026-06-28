@@ -53,7 +53,6 @@
   --c-primary:     #2C9174;  /* guild green — brand accent, pill backgrounds */
   --c-secondary:   #DD266E;  /* hot pink — primary CTA, highlight */
   --c-accent:      #CE886C;  /* dusty coral — tertiary pill accent */
-  --c-amber:       #D49A4A;  /* muted amber — techwear data accent */
   --c-white:       #FFFFFF;
 
   /* portfolio codebase "retro" palette — adjacent extensions for posts, badges */
@@ -104,7 +103,6 @@
   --font-serif:   "Kreon", "Kreon Fallback", Georgia, serif;       /* section titles + pill labels */
   --font-sans:    "Biryani", "Biryani Fallback", system-ui, sans-serif; /* body copy */
   --font-script:  "Nothing You Could Do", "Nothing You Could Do Fallback", cursive; /* handwritten tagline */
-  --font-mono:    ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace; /* technical data labels */
 
   /* ---------- SEMANTIC TYPE VARS ---------- */
   /* Hero mastheads — giant slab */
@@ -287,7 +285,6 @@ body.noise .sheet::after {
 .pill--pink  { background: var(--c-secondary); color: var(--c-light); }
 .pill--coral { background: var(--c-accent); color: var(--c-dark); }
 .pill--ink   { background: var(--c-dark); color: var(--c-light); }
-.pill--amber { background: var(--c-amber); color: var(--c-dark); }
 .pill--sm    { font-size: 13px; padding: 5px 7px 3px; }
 
 .stamp-btn {
@@ -633,40 +630,10 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
   color: var(--c-dark);
   letter-spacing: .15em;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.site-footer__row {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-}
-.site-footer__links { display: flex; gap: 14px; align-items: center; }
-.site-footer__stamp {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-top: 10px;
-  border-top: 1.5px dashed var(--c-medium);
-}
-.site-footer__barcode {
-  flex: 0 0 auto;
-  width: 84px;
-  height: 20px;
-  background: repeating-linear-gradient(90deg,
-    var(--c-dark) 0 1px, transparent 1px 3px,
-    var(--c-dark) 3px 4px, transparent 4px 7px,
-    var(--c-dark) 7px 9px, transparent 9px 11px);
-}
-.site-footer__code {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--c-dark);
-  opacity: .55;
 }
 .site-footer__inner a {
   color: var(--c-dark);
@@ -873,11 +840,11 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
 }
 .post-card:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 1px var(--c-dark); }
 .post-card .post-date {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: .1em;
+  letter-spacing: .12em;
   color: var(--fg2);
 }
 .post-card h3 {
@@ -951,32 +918,6 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
   background: var(--c-light);
   flex: 1;
 }
-.proj-card__spec {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding-bottom: 8px;
-  margin-bottom: 12px;
-  border-bottom: 1.5px dashed var(--c-dark);
-}
-.proj-card__index {
-  font-family: var(--font-serif);
-  font-size: 38px;
-  font-weight: 700;
-  line-height: .8;
-  color: var(--c-dark);
-}
-.proj-card__code {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--c-dark);
-  opacity: .6;
-  white-space: nowrap;
-}
 .proj-card__reveal h2 {
   font-family: var(--font-serif);
   font-size: 22px;
@@ -1031,15 +972,6 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
 .proj-card__reveal .actions a:active { transform: translate(2px,2px); box-shadow: none; }
 .proj-card__reveal .actions a.primary { background: var(--c-secondary); color: var(--c-light); border-color: var(--c-dark); }
 
-/* bento: featured project spans the full row and goes horizontal on desktop */
-.proj-card--wide { grid-column: 1 / -1; }
-@media (min-width: 761px) {
-  .proj-card--wide { flex-direction: row; }
-  .proj-card--wide .proj-card__media { flex: 0 0 56%; aspect-ratio: 16 / 10; }
-  .proj-card--wide .proj-card__reveal { flex: 1; }
-  .proj-card--wide .proj-card__index { font-size: 52px; }
-}
-
 /* ---------- experience cards (resume) ---------- */
 .xp-card {
   border: 2px solid var(--c-dark);
@@ -1072,11 +1004,11 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
   margin-top: 4px;
 }
 .xp-card .xp-date {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .08em;
+  letter-spacing: .12em;
   padding: 6px 9px 5px;
   background: var(--c-dark);
   color: var(--c-light);
@@ -1133,7 +1065,6 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
 .chip--dark { background: var(--c-dark); color: var(--c-light); }
 .chip--green { background: var(--c-primary); color: var(--c-light); border-color: var(--c-dark); }
 .chip--stack { background: var(--c-dark); color: var(--c-light); border: 2px solid var(--c-light); }
-.chip--amber { background: var(--c-amber); color: var(--c-dark); border-color: var(--c-dark); }
 
 /* headings within sheet */
 .sheet h1.page-title {
@@ -1167,11 +1098,11 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
 
 /* small caps label */
 .label {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .14em;
+  letter-spacing: .18em;
   color: var(--fg2);
 }
 
