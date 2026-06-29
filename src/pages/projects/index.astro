@@ -1,0 +1,86 @@
+---
+import Main from '@layouts/main.astro';
+import { PROJECTS, TECHS } from '../../data';
+---
+
+<Main
+  current="/projects"
+  lang="en"
+  content={{
+    title: 'Projects',
+    description: 'Selected projects by Mauricio Romero.',
+  }}
+>
+  <div style="margin-bottom: 20px;">
+    <div class="label" style="margin-bottom: 6px;">Selected work</div>
+    <h1 class="page-title">THE PROJECTS</h1>
+    <div class="page-sub">apps, demos &amp; experiments</div>
+    <p class="lead" style="margin-top: 10px;">
+      A selection of things I have built — production work, side projects,
+      and the occasional experiment. Each card includes the context, stack,
+      and links to the live version or source code.
+    </p>
+  </div>
+
+  <div class="row row-2" style="margin-bottom: 26px;">
+    {
+      PROJECTS.map((p) => {
+        const href = p.live || p.source;
+        return (
+          <article class="proj-card">
+            <a
+              class="proj-card__media"
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Open ${p.title}`}
+            >
+              <img
+                class="proj-card__img"
+                src={p.screenshot}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="600"
+              />
+              <div class="proj-card__pills">
+                <span class={`pill pill--${p.accent}`}>{p.tag}</span>
+              </div>
+            </a>
+            <div class="proj-card__reveal">
+              <div>
+                <h2>{p.title}</h2>
+                <p class="proj-card__subtitle">{p.subtitle}</p>
+                <p>{p.description}</p>
+              </div>
+              <div class="techs">
+                {p.techs.map((t) => <span>{t}</span>)}
+              </div>
+              <div class="actions">
+                {p.live && (
+                  <a class="primary" href={p.live} target="_blank" rel="noreferrer">Live ↗</a>
+                )}
+                {p.source && (
+                  <a href={p.source} target="_blank" rel="noreferrer">Source</a>
+                )}
+              </div>
+            </div>
+          </article>
+        );
+      })
+    }
+  </div>
+
+  <section class="ink-card" style="margin-bottom: 0;">
+    <div class="ink-card__inner ink-card__inner--bordered">
+      <span style="position: absolute; top: 10px; right: 10px;">
+        <span class="pill pill--green">STACK</span>
+      </span>
+      <div class="display-heading" style="font-size: 44px; margin: 2px 0 12px;">BUILT WITH</div>
+      <div class="chip-row">
+        {TECHS.map((t) => <span class="chip chip--stack">{t.name}</span>)}
+      </div>
+    </div>
+  </section>
+</Main>

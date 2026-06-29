@@ -1,0 +1,176 @@
+---
+import Main from '@layouts/main.astro';
+import { getCollection } from 'astro:content';
+import { BIO_ES, HOME_ES, SITE_ES, SPECIALTIES_ES } from '../../data.es';
+
+const allPosts = (await getCollection('blog-es', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
+);
+
+const featured = allPosts.filter((p) => p.data.featured).slice(0, 2);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('es-AR', { year: 'numeric', month: 'short', day: '2-digit' });
+---
+
+<Main current="/" lang="es" content={{ title: 'Inicio', description: SITE_ES.description }}>
+  <div class="tiles">
+    <div class="tile t-c4 t-r3 tile--plain home-hero-card">
+      <div>
+        <div class="t-label">{HOME_ES.eyebrow}</div>
+        <h3 class="t-title" style="margin-top: 6px; font-size: 22px;">Hola, soy Mauricio</h3>
+      </div>
+      <p class="t-big home-hero-card__headline" style="font-size: 42px; line-height: .95;">
+        SOFTWARE,<br />ESCRITURA Y<br />LOS SISTEMAS DETRÁS.
+      </p>
+      <p class="t-body home-hero-card__body" style="opacity: .8; font-size: 13px;">{HOME_ES.intro}</p>
+    </div>
+
+    <a href="/es/resume/" class="tile t-c2 t-r3 tile--img tile--link" aria-label="Ver CV completo"
+       style="background-image: url(/assets/images/mnr_photo.jpg);">
+      <div class="tile-over">
+        <div class="t-label" style="opacity: .85;">Sobre mí</div>
+        <div>
+          <p class="t-big" style="font-size: 30px; line-height: .95; margin: 0;">EL<br />AUTOR</p>
+          <span class="t-body" style="font-size: 11px; opacity: .9; margin-top: 8px; display: block;">Ver el CV →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="/es/blog/" class="tile t-c2 t-r2 tile--pink tile--link" aria-label="Leer el blog">
+      <div class="t-label" style="opacity: .9;">Escritura</div>
+      <p class="t-big" style="font-size: 40px; line-height: .92;">LEÉ<br />EL BLOG</p>
+      <div class="t-arrow">→</div>
+    </a>
+
+    <div class="tile t-c2 t-r1 tile--green">
+      <div class="t-label" style="opacity: .9;">Rol actual</div>
+      <p class="t-big" style="font-size: 26px;">EN AEROLAB</p>
+    </div>
+
+    <div class="tile t-c2 t-r1 tile--ink" style="flex-direction: row; align-items: center; justify-content: space-between;">
+      <div>
+        <div class="t-label" style="opacity: .7;">Ubicado en</div>
+        <p class="t-big" style="font-size: 22px; margin: 0;">ARGENTINA</p>
+      </div>
+      <span style="font-size: 24px;">🇦🇷</span>
+    </div>
+
+    <a href="/es/projects/" class="tile t-c2 t-r1 tile--coral tile--link" aria-label="Ver proyectos">
+      <div class="t-label">Trabajo</div>
+      <p class="t-big" style="font-size: 22px; margin: 0;">VER PROYECTOS →</p>
+    </a>
+
+    <div class="tile t-c2 t-r1 tile--plain" style="flex-direction: column; gap: 6px; justify-content: center;">
+      <div class="t-label" style="margin-bottom: 2px;">Encontrame en</div>
+      <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+        <a class="chip chip--dark" href={`mailto:${SITE_ES.email}`}>Email</a>
+        <a class="chip chip--dark" href={SITE_ES.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="chip chip--dark" href={SITE_ES.github} target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+
+    <div class="tile t-c6 t-r1 tile--plain tile--flat" style="flex-direction: row; align-items: center; justify-content: space-between;">
+      <div>
+        <div class="t-label">Sección</div>
+        <h3 class="t-title" style="font-size: 26px; margin-top: 4px;">ACTUALMENTE</h3>
+      </div>
+      <span class="page-sub" style="font-size: 26px; margin: 0;">en qué estoy</span>
+    </div>
+
+    <div class="tile t-c3 t-r2 tile--ink">
+      <div class="t-label" style="opacity: .75;">Foco principal</div>
+      <p class="t-big" style="font-size: 28px; line-height: .95;">CONSTRUYENDO HERRAMIENTAS INTERNAS EN AEROLAB</p>
+      <p class="t-body" style="font-size: 12px; opacity: .9;">{HOME_ES.highlights[0]}</p>
+    </div>
+
+    <div class="tile t-c2 t-r2 tile--coral home-scale-card">
+      <div class="t-label">Escala</div>
+      <p class="t-body" style="font-size: 13px; font-weight: 700; line-height: 1.45;">{HOME_ES.highlights[1]}</p>
+    </div>
+
+    <div class="tile t-c1 t-r2 tile--green home-vertical-card" style="align-items: center; justify-content: center; padding: 10px;">
+      <p class="t-big home-vertical-card__text" style="font-size: 18px; writing-mode: vertical-rl; transform: rotate(180deg); margin: 0; letter-spacing: .05em;">FLUJOS</p>
+    </div>
+
+    <div class="tile t-c4 t-r1 tile--plain tile--flat" style="flex-direction: row; align-items: center; justify-content: space-between;">
+      <div>
+        <div class="t-label">Del blog</div>
+        <h3 class="t-title" style="font-size: 26px; margin-top: 4px;">ÚLTIMOS TEXTOS</h3>
+      </div>
+    </div>
+
+    <a href="/es/blog/" class="tile t-c2 t-r1 tile--pink tile--link" style="flex-direction: row; align-items: center; justify-content: space-between;" aria-label="Ver todos los posts">
+      <span class="t-big" style="font-size: 20px; margin: 0;">TODOS</span>
+      <span class="t-arrow">→</span>
+    </a>
+
+    {
+      featured.map((p, i) => (
+        <a href={`/es/blog/${p.slug}/`} class={`tile ${i === 0 ? 't-c4 t-r3' : 't-c2 t-r3'} tile--plain tile--link`}>
+          <div>
+            <div class="t-label">{fmtDate(p.data.publishedAt)}</div>
+            <h3 class="t-title" style={`font-size: ${i === 0 ? 28 : 20}px; margin-top: 10px; line-height: 1.05;`}>{p.data.title}</h3>
+          </div>
+          <p class="t-body" style={`font-size: ${i === 0 ? 13 : 12}px;`}>{p.data.description}</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            {p.data.tags.slice(0, 3).map((t) => <span class="chip">#{t}</span>)}
+          </div>
+        </a>
+      ))
+    }
+
+    <div class="tile t-c2 t-r1 tile--ink" style="justify-content: center;">
+      <div class="t-label" style="opacity: .8;">Sección</div>
+      <h3 class="t-title" style="color: var(--c-light); font-size: 22px;">QUIÉN SOY</h3>
+    </div>
+
+    <a href={`mailto:${SITE_ES.email}`} class="tile t-c2 t-r1 tile--green tile--link" style="flex-direction: row; align-items: center; justify-content: space-between;" aria-label="Mandar un email">
+      <div>
+        <div class="t-label" style="opacity: .9;">Escribime</div>
+        <p class="t-big" style="font-size: 22px; margin: 0;">HABLEMOS</p>
+      </div>
+      <span class="t-arrow">→</span>
+    </a>
+
+    <div class="tile t-c2 t-r1 tile--plain" style="flex-direction: row; align-items: center; justify-content: space-between;">
+      <div>
+        <div class="t-label">Experiencia</div>
+        <p class="t-title" style="font-size: 22px; margin: 0;">4+ AÑOS</p>
+      </div>
+      <span style="font-family: var(--font-script); font-size: 20px; color: var(--c-primary);">y sumando</span>
+    </div>
+
+    <div class="tile t-c4 t-r2 tile--plain" style="justify-content: flex-start; gap: 10px;">
+      <div class="t-label">Nota 01 · Hoy</div>
+      <p class="t-body" style="font-size: 14px; line-height: 1.5; margin: 0;">{BIO_ES[0]}</p>
+    </div>
+
+    <div class="tile t-c2 t-r2 tile--coral" style="justify-content: flex-start; gap: 10px;">
+      <div class="t-label">Nota 02 · Oficio</div>
+      <p class="t-body" style="font-size: 13px; line-height: 1.5; margin: 0;">{BIO_ES[1]}</p>
+    </div>
+
+    <div class="tile t-c3 t-r2 tile--plain" style="justify-content: flex-start; gap: 10px;">
+      <div class="t-label">Nota 03 · Antes</div>
+      <p class="t-body" style="font-size: 13px; line-height: 1.5; margin: 0;">{BIO_ES[2]}</p>
+    </div>
+
+    <div class="tile t-c1 t-r2 tile--green home-vertical-card" style="align-items: center; justify-content: center; padding: 8px;" aria-hidden="true">
+      <p class="t-big home-vertical-card__text" style="font-size: 16px; writing-mode: vertical-rl; transform: rotate(180deg); margin: 0; letter-spacing: .08em;">BIO</p>
+    </div>
+
+    <div class="tile t-c2 t-r2 tile--ink" style="justify-content: flex-start; gap: 10px;">
+      <div class="t-label" style="opacity: .7;">Fuera del trabajo</div>
+      <p class="t-body" style="font-size: 13px; line-height: 1.5; margin: 0;">Juegos de rol de mesa, ensayos largos y side projects sobre-ingenierizados que probablemente nunca publique.</p>
+    </div>
+
+    <div class="tile t-c6 t-rauto tile--plain" style="padding: 16px 18px;">
+      <div class="t-label">Stack</div>
+      <h3 class="t-title" style="font-size: 22px; margin: 6px 0 10px;">ESPECIALIDADES</h3>
+      <div class="chip-row">
+        {SPECIALTIES_ES.map((s) => <span class="chip">{s}</span>)}
+      </div>
+    </div>
+  </div>
+</Main>

@@ -1,0 +1,22 @@
+---
+import { SITE } from '../../data';
+import { CHROME_COPY, type Lang } from '@utils/locale';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const year = String(new Date().getFullYear()).split('').join(' ');
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span>© {year}  ·  M a u r i c i o  R o m e r o  ·  🍊</span>
+    <span style="display: flex; gap: 14px; align-items: center;">
+      <a href={SITE.github} target="_blank" rel="noreferrer">github</a>
+      <a href={SITE.linkedin} target="_blank" rel="noreferrer">linkedin</a>
+      <a href={`mailto:${SITE.email}`}>{CHROME_COPY[lang].footerEmail}</a>
+    </span>
+  </div>
+</footer>

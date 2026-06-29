@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+.playwright/
+.playwright-cli/
+.claude/
+
+# local tooling artifacts
+.atl/
+.peel.yml

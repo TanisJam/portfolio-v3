@@ -1,0 +1,67 @@
+---
+---
+
+<div class="dice-root"></div>
+
+<script>
+  const CRIT_MESSAGES: Record<number, string> = {
+    1: 'Natural 1 — you trip over your own cables.',
+    20: 'Nat 20! Critical hit. Pour yourself a mate.',
+  };
+
+  const DICE_SVG = `<svg viewBox="0 0 24 24" fill="none"><path d="m12 3 9 5v8l-9 5-9-5V8l9-5Z" stroke="currentColor" stroke-width="1.8"/><path d="M12 13v9M3 8l9 5 9-5" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="11" r=".9" fill="currentColor"/><circle cx="16" cy="11" r=".9" fill="currentColor"/><circle cx="12" cy="17.5" r=".9" fill="currentColor"/></svg>`;
+
+  const root = document.querySelector('.dice-root');
+  if (root) {
+    const btn = document.createElement('button');
+    btn.className = 'dice-btn';
+    btn.setAttribute('aria-label', 'Roll a d20');
+    btn.setAttribute('title', 'Roll a d20');
+    btn.innerHTML = DICE_SVG;
+    root.appendChild(btn);
+
+    let resultEl: HTMLDivElement | null = null;
+    let hideTimer: number | null = null;
+
+    const ensureResult = () => {
+      if (!resultEl) {
+        resultEl = document.createElement('div');
+        resultEl.className = 'dice-result';
+        resultEl.setAttribute('role', 'status');
+        resultEl.setAttribute('aria-live', 'polite');
+        root.appendChild(resultEl);
+      }
+      return resultEl;
+    };
+
+    const renderResult = (value: number, rolling: boolean) => {
+      const el = ensureResult();
+      const msg = !rolling && CRIT_MESSAGES[value] ? `<div class="dice-msg">${CRIT_MESSAGES[value]}</div>` : '';
+      el.innerHTML = `<span class="label">d20 roll</span><strong>${value}</strong>${msg}`;
+    };
+
+    const clearResult = () => {
+      if (resultEl && resultEl.parentNode) resultEl.parentNode.removeChild(resultEl);
+      resultEl = null;
+    };
+
+    btn.addEventListener('click', () => {
+      if (hideTimer) { window.clearTimeout(hideTimer); hideTimer = null; }
+      let count = 0;
+      const iv = window.setInterval(() => {
+        const v = 1 + Math.floor(Math.random() * 20);
+        renderResult(v, true);
+        count++;
+        if (count > 8) {
+          window.clearInterval(iv);
+          const final = 1 + Math.floor(Math.random() * 20);
+          renderResult(final, false);
+          hideTimer = window.setTimeout(() => {
+            clearResult();
+            hideTimer = null;
+          }, 4000);
+        }
+      }, 55);
+    });
+  }
+</script>

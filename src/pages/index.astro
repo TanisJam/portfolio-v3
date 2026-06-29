@@ -1,80 +1,174 @@
 ---
-// Component Imports
 import Main from '@layouts/main.astro';
-import Header from '@organisms/Header.astro';
-import About from '@molecules/About.astro';
-import Divider from '@atoms/Divider.astro';
-import Section from '@molecules/Section.astro';
-import Chip from '@atoms/Chip.astro';
-import CardExperience from '@molecules/CardExperience.astro';
-import CardProject from '@molecules/CardProject.astro';
-import Footer from '@molecules/Footer.astro';
-import { Icon } from 'astro-icon/components';
-import { EXPERIENCE, TECHS, projects } from './../data';
+import { getCollection } from 'astro:content';
+import { BIO, HOME, SITE, SPECIALTIES } from '../data';
 
-const content = {
-  title: 'Mauricio Romero',
-};
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
+);
+
+const featured = allPosts.filter((p) => p.data.featured).slice(0, 2);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' });
 ---
 
-<Main content={content}>
-  <Header />
-  <About />
-  <Divider />
-  <Section title="I usually use">
-    <div class="container mt-4 flex flex-wrap gap-2">
-      {
-        TECHS.map((tech) => (
-          <Chip>
-            <Icon name={tech.logo} />
-            <span>{tech.name}</span>
-          </Chip>
-        ))
-      }
+<Main current="/" lang="en" content={{ title: 'Home', description: SITE.description }}>
+  <div class="tiles">
+    <div class="tile t-c4 t-r3 tile--plain home-hero-card">
+      <div>
+        <div class="t-label">{HOME.eyebrow}</div>
+        <h3 class="t-title" style="margin-top: 6px; font-size: 22px;">Hello, I'm Mauricio</h3>
+      </div>
+      <p class="t-big home-hero-card__headline" style="font-size: 42px; line-height: .95;">SOFTWARE,<br/>WRITING, &amp; THE<br/>SYSTEMS BEHIND IT.</p>
+      <p class="t-body home-hero-card__body" style="opacity: .8; font-size: 13px;">{HOME.intro}</p>
     </div>
-  </Section>
-  <Section title="Experience">
+
+    <a href="/resume" class="tile t-c2 t-r3 tile--img tile--link" aria-label="Read full resume"
+       style="background-image: url(/assets/images/mnr_photo.jpg);">
+      <div class="tile-over">
+        <div class="t-label" style="opacity: .85;">About</div>
+        <div>
+          <p class="t-big" style="font-size: 30px; line-height: .95; margin: 0;">THE<br/>AUTHOR</p>
+          <span class="t-body" style="font-size: 11px; opacity: .9; margin-top: 8px; display: block;">Read the resume →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="/blog" class="tile t-c2 t-r2 tile--pink tile--link" aria-label="Read the blog">
+      <div class="t-label" style="opacity: .9;">Writing</div>
+      <p class="t-big" style="font-size: 40px; line-height: .92;">READ<br/>THE BLOG</p>
+      <div class="t-arrow">→</div>
+    </a>
+
+    <div class="tile t-c2 t-r1 tile--green">
+      <div class="t-label" style="opacity: .9;">Current role</div>
+      <p class="t-big" style="font-size: 26px;">AT AEROLAB</p>
+    </div>
+
+    <div class="tile t-c2 t-r1 tile--ink" style="flex-direction: row; align-items: center; justify-content: space-between;">
+      <div>
+        <div class="t-label" style="opacity: .7;">Based in</div>
+        <p class="t-big" style="font-size: 22px; margin: 0;">ARGENTINA</p>
+      </div>
+      <span style="font-size: 24px;">🇦🇷</span>
+    </div>
+
+    <a href="/projects" class="tile t-c2 t-r1 tile--coral tile--link" aria-label="See projects">
+      <div class="t-label">Work</div>
+      <p class="t-big" style="font-size: 22px; margin: 0;">SEE PROJECTS →</p>
+    </a>
+
+    <div class="tile t-c2 t-r1 tile--plain" style="flex-direction: column; gap: 6px; justify-content: center;">
+      <div class="t-label" style="margin-bottom: 2px;">Find me</div>
+      <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+        <a class="chip chip--dark" href={`mailto:${SITE.email}`}>Email</a>
+        <a class="chip chip--dark" href={SITE.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="chip chip--dark" href={SITE.github} target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+
+    <div class="tile t-c6 t-r1 tile--plain tile--flat" style="flex-direction: row; align-items: center; justify-content: space-between;">
+      <div>
+        <div class="t-label">Section</div>
+        <h3 class="t-title" style="font-size: 26px; margin-top: 4px;">CURRENTLY</h3>
+      </div>
+      <span class="page-sub" style="font-size: 26px; margin: 0;">what I'm up to</span>
+    </div>
+
+    <div class="tile t-c3 t-r2 tile--ink">
+      <div class="t-label" style="opacity: .75;">Primary focus</div>
+      <p class="t-big" style="font-size: 28px; line-height: .95;">BUILDING INTERNAL TOOLS AT AEROLAB</p>
+      <p class="t-body" style="font-size: 12px; opacity: .9;">{HOME.highlights[0]}</p>
+    </div>
+
+    <div class="tile t-c2 t-r2 tile--coral home-scale-card">
+      <div class="t-label">Scale</div>
+      <p class="t-body" style="font-size: 13px; font-weight: 700; line-height: 1.45;">{HOME.highlights[1]}</p>
+    </div>
+
+    <div class="tile t-c1 t-r2 tile--green home-vertical-card" style="align-items: center; justify-content: center; padding: 10px;">
+      <p class="t-big home-vertical-card__text" style="font-size: 18px; writing-mode: vertical-rl; transform: rotate(180deg); margin: 0; letter-spacing: .05em;">WORKFLOWS</p>
+    </div>
+
+    <div class="tile t-c4 t-r1 tile--plain tile--flat" style="flex-direction: row; align-items: center; justify-content: space-between;">
+      <div>
+        <div class="t-label">From the blog</div>
+        <h3 class="t-title" style="font-size: 26px; margin-top: 4px;">LATEST WRITING</h3>
+      </div>
+    </div>
+
+    <a href="/blog" class="tile t-c2 t-r1 tile--pink tile--link" style="flex-direction: row; align-items: center; justify-content: space-between;" aria-label="See all posts">
+      <span class="t-big" style="font-size: 20px; margin: 0;">ALL POSTS</span>
+      <span class="t-arrow">→</span>
+    </a>
+
     {
-      EXPERIENCE.map((exp) => (
-        <CardExperience
-          icon={exp.image}
-          company={exp.company}
-          link={exp.link}
-          position={exp.title}
-          timeline={exp.date}
-          description={exp.description}
-        />
+      featured.map((p, i) => (
+        <a href={`/blog/${p.slug}/`} class={`tile ${i === 0 ? 't-c4 t-r3' : 't-c2 t-r3'} tile--plain tile--link`}>
+          <div>
+            <div class="t-label">{fmtDate(p.data.publishedAt)}</div>
+            <h3 class="t-title" style={`font-size: ${i === 0 ? 28 : 20}px; margin-top: 10px; line-height: 1.05;`}>{p.data.title}</h3>
+          </div>
+          <p class="t-body" style={`font-size: ${i === 0 ? 13 : 12}px;`}>{p.data.description}</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            {p.data.tags.slice(0, 3).map((t) => <span class="chip">#{t}</span>)}
+          </div>
+        </a>
       ))
     }
-  </Section>
 
-  <Section title="Latest Projects">
-    {
-      projects.map(
-        ({
-          icon,
-          title,
-          subtitle,
-          description,
-          techs,
-          live,
-          source,
-          screenshot,
-        }) => (
-          <CardProject
-            icon={icon}
-            title={title}
-            subtitle={subtitle}
-            description={description}
-            techs={techs}
-            live={live}
-            source={source}
-            screenshot={screenshot}
-          />
-        )
-      )
-    }
-  </Section>
-  <Divider />
-  <Footer />
+    <div class="tile t-c2 t-r1 tile--ink" style="justify-content: center;">
+      <div class="t-label" style="opacity: .8;">Section</div>
+      <h3 class="t-title" style="color: var(--c-light); font-size: 22px;">WHO I AM</h3>
+    </div>
+
+    <a href={`mailto:${SITE.email}`} class="tile t-c2 t-r1 tile--green tile--link" style="flex-direction: row; align-items: center; justify-content: space-between;" aria-label="Send an email">
+      <div>
+        <div class="t-label" style="opacity: .9;">Drop a line</div>
+        <p class="t-big" style="font-size: 22px; margin: 0;">SAY HI</p>
+      </div>
+      <span class="t-arrow">→</span>
+    </a>
+
+    <div class="tile t-c2 t-r1 tile--plain" style="flex-direction: row; align-items: center; justify-content: space-between;">
+      <div>
+        <div class="t-label">Experience</div>
+        <p class="t-title" style="font-size: 22px; margin: 0;">4+ YEARS</p>
+      </div>
+      <span style="font-family: var(--font-script); font-size: 20px; color: var(--c-primary);">& counting</span>
+    </div>
+
+    <div class="tile t-c4 t-r2 tile--plain" style="justify-content: flex-start; gap: 10px;">
+      <div class="t-label">Note 01 · Today</div>
+      <p class="t-body" style="font-size: 14px; line-height: 1.5; margin: 0;">{BIO[0]}</p>
+    </div>
+
+    <div class="tile t-c2 t-r2 tile--coral" style="justify-content: flex-start; gap: 10px;">
+      <div class="t-label">Note 02 · Craft</div>
+      <p class="t-body" style="font-size: 13px; line-height: 1.5; margin: 0;">{BIO[1]}</p>
+    </div>
+
+    <div class="tile t-c3 t-r2 tile--plain" style="justify-content: flex-start; gap: 10px;">
+      <div class="t-label">Note 03 · Before</div>
+      <p class="t-body" style="font-size: 13px; line-height: 1.5; margin: 0;">{BIO[2]}</p>
+    </div>
+
+    <div class="tile t-c1 t-r2 tile--green home-vertical-card" style="align-items: center; justify-content: center; padding: 8px;" aria-hidden="true">
+      <p class="t-big home-vertical-card__text" style="font-size: 16px; writing-mode: vertical-rl; transform: rotate(180deg); margin: 0; letter-spacing: .08em;">BIO</p>
+    </div>
+
+    <div class="tile t-c2 t-r2 tile--ink" style="justify-content: flex-start; gap: 10px;">
+      <div class="t-label" style="opacity: .7;">Off-hours</div>
+      <p class="t-body" style="font-size: 13px; line-height: 1.5; margin: 0;">Tabletop RPGs, long-form essays, and over-engineering side projects I'll probably never ship.</p>
+    </div>
+
+    <div class="tile t-c6 t-rauto tile--plain" style="padding: 16px 18px;">
+      <div class="t-label">Stack</div>
+      <h3 class="t-title" style="font-size: 22px; margin: 6px 0 10px;">SPECIALTIES</h3>
+      <div class="chip-row">
+        {SPECIALTIES.map((s) => <span class="chip">{s}</span>)}
+      </div>
+    </div>
+  </div>
 </Main>

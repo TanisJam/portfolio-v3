@@ -1,0 +1,84 @@
+---
+import Main from '@layouts/main.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog-es', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
+);
+
+const tagSet = new Set<string>();
+posts.forEach((p) => p.data.tags.forEach((t) => tagSet.add(t)));
+const allTags = ['all', ...Array.from(tagSet)];
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: '2-digit' });
+---
+
+<Main
+  current="/blog"
+  lang="es"
+  content={{
+    title: 'Blog',
+    description:
+      'Escritura sobre sistemas frontend, herramientas internas, flujos asistidos por IA y proyectos personales.',
+  }}
+>
+  <div style="margin-bottom: 20px;">
+    <div class="label" style="margin-bottom: 6px;">Escritura</div>
+    <h1 class="page-title">EL BLOG</h1>
+    <div class="page-sub">notas del banco de trabajo</div>
+    <p class="lead" style="margin-top: 10px;">
+      Ensayos breves sobre sistemas frontend, herramientas internas, flujos asistidos por IA
+      y el proceso de ingeniería detrás del trabajo de producto.
+    </p>
+  </div>
+
+  <div class="tag-filter" role="group" aria-label="Filtrar por etiqueta">
+    {
+      allTags.map((t, i) => (
+        <button type="button" data-tag={t} aria-pressed={i === 0 ? 'true' : 'false'}>
+          {t === 'all' ? 'Todos' : `#${t}`}
+        </button>
+      ))
+    }
+  </div>
+
+  <div id="posts" style="display: grid; gap: 16px; margin-bottom: 10px;">
+    {
+      posts.map((p) => (
+        <a
+          class="post-card"
+          href={`/es/blog/${p.slug}/`}
+          data-tags={p.data.tags.join(' ')}
+        >
+          <div class="post-head">
+            <span class="post-date">{fmtDate(p.data.publishedAt)}</span>
+            {p.data.featured && <span class="pill pill--green pill--sm">Destacado</span>}
+          </div>
+          <h3>{p.data.title}</h3>
+          <p>{p.data.description}</p>
+          <div class="tags">
+            {p.data.tags.map((t) => <span class="pill pill--paper pill--sm">#{t}</span>)}
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</Main>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.tag-filter button');
+  const cards = document.querySelectorAll<HTMLAnchorElement>('#posts .post-card');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.tag ?? 'all';
+      buttons.forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+      cards.forEach((card) => {
+        const tags = (card.dataset.tags ?? '').split(/\s+/).filter(Boolean);
+        const visible = tag === 'all' || tags.includes(tag);
+        card.style.display = visible ? '' : 'none';
+      });
+    });
+  });
+</script>

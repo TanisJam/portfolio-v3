@@ -1,0 +1,142 @@
+---
+import Main from '@layouts/main.astro';
+import { TECHS } from '../../data';
+import {
+  CERTIFICATIONS_ES,
+  EDUCATION_ES,
+  EXPERIENCE_ES,
+  LANGUAGES_ES,
+  SITE_ES,
+  SPECIALTIES_ES,
+} from '../../data.es';
+---
+
+<Main
+  current="/resume"
+  lang="es"
+  content={{
+    title: 'CV',
+    description:
+      'Perfil profesional, experiencia seleccionada y CV descargable de Mauricio Romero.',
+  }}
+>
+  <div class="row row-2-1" style="margin-bottom: 26px; align-items: flex-start;">
+    <div>
+      <div class="label" style="margin-bottom: 6px;">CV</div>
+      <h1 class="page-title">MAURICIO<br />ROMERO</h1>
+      <div class="page-sub">desarrollador de software</div>
+      <p class="lead" style="margin-top: 12px;">
+        Desarrollador de software en Aerolab. Sistemas frontend, herramientas internas
+        y desarrollo web práctico — desde Argentina.
+      </p>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px;">
+        <a class="stamp-btn" href={SITE_ES.resumePdf} download>Descargar PDF</a>
+        <a class="stamp-btn stamp-btn--green" href={`mailto:${SITE_ES.email}`}>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/>
+            <path d="m3 7 9 7 9-7" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+          Escribime
+        </a>
+        <a class="stamp-btn stamp-btn--ink" href={SITE_ES.linkedin} target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="stroke: none;">
+            <path d="M4.98 3.5A2.5 2.5 0 1 1 2.5 6 2.5 2.5 0 0 1 4.98 3.5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05A4.17 4.17 0 0 1 17.5 8.7c4 0 4.75 2.6 4.75 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H10V9Z"/>
+          </svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <aside class="ink-card">
+      <div class="ink-card__inner ink-card__inner--bordered">
+        <span style="position: absolute; top: 10px; right: 10px;">
+          <span class="pill pill--green">INFO</span>
+        </span>
+        <div style="font-family: var(--font-serif); font-size: 24px; color: var(--c-light); text-transform: uppercase; line-height: 100%; margin-top: 2px;">Rol actual</div>
+        <div class="display-heading" style="font-size: 38px; margin: 6px 0 12px;">AEROLAB</div>
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-family: var(--font-sans); font-weight: 700; font-size: 13px; color: var(--c-light); line-height: 1.5;">
+          <span style="opacity: .65;">Ubicación</span><span>{SITE_ES.location}</span>
+          <span style="opacity: .65;">Rol</span><span>{SITE_ES.role}</span>
+          <span style="opacity: .65;">Email</span><span style="word-break: break-all;">{SITE_ES.email}</span>
+          <span style="opacity: .65;">GitHub</span><span>TanisJam</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <section style="margin-bottom: 26px;">
+    <div class="section-head">
+      <h2>EXPERIENCIA</h2>
+      <span class="eyebrow">la línea de tiempo</span>
+    </div>
+    {
+      EXPERIENCE_ES.map((e) => (
+        <article class="xp-card">
+          <div class="xp-head">
+            <div>
+              <h3>{e.title}</h3>
+              <div class="xp-company">{e.company}</div>
+            </div>
+            <span class="xp-date">{e.date}</span>
+          </div>
+          <p>{e.description}</p>
+        </article>
+      ))
+    }
+  </section>
+
+  <div class="row row-3" style="margin-bottom: 26px;">
+    <section class="stamp-card" style="padding: 20px 22px;">
+      <div class="label" style="margin-bottom: 6px;">Especialidades</div>
+      <h3 style="font-family: var(--font-serif); font-size: 24px; text-transform: uppercase; margin: 0 0 12px;">Habilidades</h3>
+      <div class="chip-row">
+        {SPECIALTIES_ES.map((s) => <span class="chip">{s}</span>)}
+      </div>
+    </section>
+    <section class="stamp-card" style="padding: 20px 22px;">
+      <div class="label" style="margin-bottom: 6px;">Educación</div>
+      <h3 style="font-family: var(--font-serif); font-size: 24px; text-transform: uppercase; margin: 0 0 12px;">Estudios</h3>
+      <ul style="padding-left: 18px; margin: 0; font-family: var(--font-sans); font-weight: 700; font-size: 14px; line-height: 1.6;">
+        {EDUCATION_ES.map((e) => <li>{e}</li>)}
+      </ul>
+      <div class="label" style="margin-top: 14px; margin-bottom: 4px;">Certificaciones</div>
+      <ul style="padding-left: 18px; margin: 0; font-family: var(--font-sans); font-weight: 700; font-size: 13px; line-height: 1.6;">
+        {CERTIFICATIONS_ES.map((c) => <li>{c}</li>)}
+      </ul>
+    </section>
+    <section class="stamp-card" style="padding: 20px 22px;">
+      <div class="label" style="margin-bottom: 6px;">Idiomas</div>
+      <h3 style="font-family: var(--font-serif); font-size: 24px; text-transform: uppercase; margin: 0 0 12px;">Lenguas</h3>
+      <ul style="padding-left: 18px; margin: 0; font-family: var(--font-sans); font-weight: 700; font-size: 14px; line-height: 1.6;">
+        {LANGUAGES_ES.map((l) => <li>{l}</li>)}
+      </ul>
+      <div class="label" style="margin-top: 14px; margin-bottom: 6px;">Stack</div>
+      <div class="chip-row">
+        {TECHS.slice(0, 10).map((t) => <span class="chip">{t.name}</span>)}
+      </div>
+    </section>
+  </div>
+
+  <section style="border: 2px solid var(--c-dark); border-radius: 6px; box-shadow: 2px 2px 0 1px var(--c-dark); background: var(--c-secondary); padding: 22px 24px; color: var(--c-light); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;">
+    <div>
+      <div style="font-family: var(--font-script); font-size: 32px; line-height: 1; margin-bottom: 4px; color: var(--c-light); text-shadow: 0 2px 0 rgba(0,0,0,.2);">trabajemos juntos</div>
+      <div class="display-heading" style="font-size: 40px; margin: 0; color: var(--c-light);">DECÍ HOLA</div>
+    </div>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <a class="stamp-btn stamp-btn--ghost" href={`mailto:${SITE_ES.email}`}>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/>
+          <path d="m3 7 9 7 9-7" stroke="currentColor" stroke-width="1.8"/>
+        </svg>
+        Email
+      </a>
+      <a class="stamp-btn stamp-btn--ink" href={SITE_ES.linkedin} target="_blank" rel="noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="stroke: none;">
+          <path d="M4.98 3.5A2.5 2.5 0 1 1 2.5 6 2.5 2.5 0 0 1 4.98 3.5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05A4.17 4.17 0 0 1 17.5 8.7c4 0 4.75 2.6 4.75 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H10V9Z"/>
+        </svg>
+        LinkedIn
+      </a>
+      <a class="stamp-btn stamp-btn--green" href={SITE_ES.resumePdf} download>Descargar PDF</a>
+    </div>
+  </section>
+</Main>
