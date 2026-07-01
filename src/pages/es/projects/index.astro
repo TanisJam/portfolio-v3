@@ -25,51 +25,32 @@ import { PROJECTS_ES } from '../../../data.es';
 
   <div class="row row-2" style="margin-bottom: 26px;">
     {
-      PROJECTS_ES.map((p) => {
-        const href = p.live || p.source;
-        return (
-          <article class="proj-card">
-            <a
-              class="proj-card__media"
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`Abrir ${p.title}`}
-            >
-              <img
-                class="proj-card__img"
-                src={p.screenshot}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                width="800"
-                height="600"
-              />
-              <div class="proj-card__pills">
-                <span class={`pill pill--${p.accent}`}>{p.tag}</span>
-              </div>
-            </a>
-            <div class="proj-card__reveal">
-              <div>
-                <h2>{p.title}</h2>
-                <p class="proj-card__subtitle">{p.subtitle}</p>
-                <p>{p.description}</p>
-              </div>
-              <div class="techs">
-                {p.techs.map((t) => <span>{t}</span>)}
-              </div>
-              <div class="actions">
-                {p.live && (
-                  <a class="primary" href={p.live} target="_blank" rel="noreferrer">Demo ↗</a>
-                )}
-                {p.source && (
-                  <a href={p.source} target="_blank" rel="noreferrer">Código</a>
-                )}
-              </div>
+      PROJECTS_ES.map((p, i) => (
+        <article class={`proj-card proj-card--${p.accent}`}>
+          <div class="proj-card__head">
+            <span class={`pill pill--${p.accent}`}>{p.tag}</span>
+            <span class="proj-card__index">{String(i + 1).padStart(2, '0')}</span>
+          </div>
+          <div class="proj-card__body">
+            <h2>{p.title}</h2>
+            <p class="proj-card__subtitle">{p.subtitle}</p>
+            <p class="proj-card__desc">{p.description}</p>
+            <div class="techs">
+              {p.techs.map((t) => <span>{t}</span>)}
             </div>
-          </article>
-        );
-      })
+            <div class="actions">
+              {p.live && (
+                <a class="primary" href={p.live} target="_blank" rel="noreferrer">
+                  {p.liveLabel ?? 'Demo ↗'}
+                </a>
+              )}
+              {p.source && (
+                <a href={p.source} target="_blank" rel="noreferrer">Código</a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))
     }
   </div>
 
