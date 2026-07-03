@@ -153,7 +153,7 @@ export const PROJECTS = [
     description:
       'A full-stack social app where solo travelers find companions and split travel costs. Built with Next.js 15 and Supabase, it ships authentication, a personalized dashboard, real-time 1-on-1 chat, a friends system, trip plans with discovery filters, and reviews — covered by Playwright E2E tests.',
     techs: ['Next.js 15', 'TypeScript', 'Supabase', 'Tailwind CSS', 'Playwright'],
-    live: 'https://the-orange-mate.mnr.ar',
+    live: '',
     source: 'https://github.com/TanisJam/the-orange-mate',
     tag: 'APP',
     accent: 'coral',
@@ -214,7 +214,7 @@ export const PROJECTS = [
     description:
       'Drop anonymous messages pinned to your location on a Mapbox map. Notes aggregate into Uber H3 hex cells, rendered as a word-cloud layer and floating draggable bubbles, with real-time updates via Supabase and a 48-hour expiry.',
     techs: ['Next.js', 'TypeScript', 'Mapbox GL', 'H3', 'Supabase', 'Framer Motion'],
-    live: 'https://hecho-hex.mnr.ar',
+    live: '',
     source: 'https://github.com/TanisJam/hecho-hex',
     tag: 'APP',
     accent: 'coral',
