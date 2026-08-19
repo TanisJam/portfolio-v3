@@ -4,7 +4,7 @@ export const CHROME_COPY = {
   en: {
     navLabel: 'Primary',
     nav: [
-      { href: '/', label: 'Home' },
+      { href: '/home', label: 'Home' },
       { href: '/blog', label: 'Blog' },
       { href: '/projects', label: 'Projects' },
       { href: '/resume', label: 'Resume' },
@@ -16,7 +16,7 @@ export const CHROME_COPY = {
   es: {
     navLabel: 'Principal',
     nav: [
-      { href: '/', label: 'Inicio' },
+      { href: '/home', label: 'Inicio' },
       { href: '/blog', label: 'Blog' },
       { href: '/projects', label: 'Proyectos' },
       { href: '/resume', label: 'CV' },
