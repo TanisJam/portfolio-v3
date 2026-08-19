@@ -1,0 +1,32 @@
+---
+import Main from '@layouts/main.astro';
+
+// `current` queda vacío a propósito: NavChips marca el chip activo comparando
+// `current === n.href`, y en un 404 no hay sección activa que marcar.
+---
+
+<Main
+  current=""
+  lang="en"
+  content={{
+    title: 'Not found',
+    description: 'That page is not here.',
+  }}
+>
+  <div style="margin-bottom: 20px;">
+    <div class="label" style="margin-bottom: 6px;">404</div>
+    <h1 class="page-title">NOT HERE</h1>
+    <div class="page-sub">the page moved, or never existed</div>
+    <p class="lead" style="margin-top: 10px;">
+      The front door of this site is now a scroll-driven piece about an orange
+      tree, and the index that used to live there moved to <code>/home</code>.
+      If you followed an older link, that is most likely why you landed here.
+    </p>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <a class="stamp-btn" href="/home">Go to the site index</a>
+    <a class="stamp-btn stamp-btn--ghost" href="/blog">Read the blog</a>
+    <a class="stamp-btn stamp-btn--ghost" href="/">See the piece</a>
+  </div>
+</Main>
