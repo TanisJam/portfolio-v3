@@ -12,6 +12,8 @@ export const CHROME_COPY = {
     footerEmail: 'email',
     switchLabel: 'ES',
     switchAria: 'Switch to Spanish',
+    pieceLabel: 'The piece',
+    pieceAria: 'Back to the orange tree',
   },
   es: {
     navLabel: 'Principal',
@@ -24,6 +26,8 @@ export const CHROME_COPY = {
     footerEmail: 'correo',
     switchLabel: 'EN',
     switchAria: 'Cambiar a inglés',
+    pieceLabel: 'La pieza',
+    pieceAria: 'Volver al naranjo',
   },
 } as const;
 

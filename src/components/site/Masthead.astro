@@ -11,13 +11,30 @@ const { lang, currentPath, compact = false } = Astro.props;
 const switchHref = getAlternateLanguagePath(currentPath, lang);
 const switchText = CHROME_COPY[lang].switchLabel;
 const switchAria = CHROME_COPY[lang].switchAria;
+const pieceLabel = CHROME_COPY[lang].pieceLabel;
+const pieceAria = CHROME_COPY[lang].pieceAria;
+
+/* El enlace a la pieza NO se localiza, y no es un descuido. `localizePath('/',
+   'es')` devuelve `/es/`, una ruta que no existe: la pieza vive en la raiz del
+   dominio, es sola en ingles, y Astro no tiene index ahi. Localizarlo seria un
+   404 en todo el lado espanol. */
+const PIECE = '/';
 ---
 
 <div class={`masthead${compact ? ' masthead--compact' : ''}`}>
   <span class="masthead__eyebrow">MNR</span>
-  <a href={switchHref} class="masthead__page" aria-label={switchAria}>
-    {switchText}
+  <div class="masthead__corner">
+    <a href={PIECE} class="masthead__piece">{pieceLabel}</a>
+    <a href={switchHref} class="masthead__page" aria-label={switchAria}>
+      {switchText}
+    </a>
+  </div>
+  <!-- El wordmark es la puerta de vuelta. Era un `span` y un `h1` sueltos, o sea
+       que el gesto que hace todo el mundo para volver al principio —clickear el
+       logo— no hacia nada. Y en este dominio el principio no es `/home`: es la
+       pieza, que es la que sirve la raiz. -->
+  <a href={PIECE} class="masthead__home" aria-label={pieceAria}>
+    <h1 class="masthead__title">Mauricio</h1>
+    <div class="masthead__script">Romero</div>
   </a>
-  <h1 class="masthead__title">Mauricio</h1>
-  <div class="masthead__script">Romero</div>
 </div>

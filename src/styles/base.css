@@ -362,6 +362,55 @@ hr.divider {
   text-transform: uppercase;
   letter-spacing: .05em;
 }
+/* Las dos salidas de la esquina viajan juntas. `__page` traia su propio
+   `position:absolute`, asi que ahora lo ubica el contenedor y ella se queda
+   quieta adentro. */
+.masthead__corner {
+  position: absolute; top: 0; right: 0;
+  display: flex; align-items: stretch;
+}
+.masthead__corner .masthead__page { position: static; }
+.masthead__piece {
+  background: var(--c-dark); color: var(--c-light);
+  font-family: var(--font-serif);
+  font-size: 18px; line-height: 100%;
+  padding: 5px 10px 4px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.masthead__piece:hover { background: var(--c-secondary); }
+/* Las dos salidas miden 24px de alto: el tamano correcto para la cartela y un
+   blanco de toque pobre. Se estira el area sensible con un pseudo-elemento en
+   vez de con padding, asi el dibujo no cambia.
+ *
+ * SOLO a lo alto. Son vecinas, y estirarlas a lo ancho haria que tocar "la
+ * pieza" cayera en el cambio de idioma.
+ *
+ * Y el area pedida es de 44px pero la MEDIDA es de 34: `.masthead` lleva
+ * `overflow:hidden` —lo necesita, la cartela recorta su propio dibujo— y la
+ * esquina esta pegada a `top:0`, asi que la mitad que sube queda recortada
+ * contra el borde. 34x91 y 34x33 pasan holgado el minimo de 24x24 de WCAG 2.2
+ * AA; no llegan a los 44 de la guia de Apple. Subirlo mas pide mover la esquina
+ * hacia adentro, que es otro cambio de composicion. */
+@media (pointer: coarse) {
+  /* Las DOS clases, y no `.masthead__corner a`: `.masthead__corner .masthead__page`
+     tiene mas especificidad y deja el switch en `static`, con lo cual su `::after`
+     se ancla al contenedor entero en vez de a si mismo y tapa el enlace de al
+     lado. El area sensible tiene que colgar de CADA enlace. */
+  .masthead__corner .masthead__piece,
+  .masthead__corner .masthead__page { position: relative; }
+  .masthead__corner a::after {
+    content: '';
+    position: absolute; left: 0; right: 0;
+    top: 50%; transform: translateY(-50%);
+    height: 44px;
+  }
+}
+/* El wordmark entero es el enlace, sin heredar nada de un `a` por defecto. */
+.masthead__home { display: block; text-decoration: none; color: inherit; }
+
 .masthead__page {
   position: absolute; top: 0; right: 0;
   background: var(--c-secondary); color: var(--c-light);
@@ -721,7 +770,8 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
     font-size: 18px;
     padding: 4px 7px 3px;
   }
-  .masthead__page {
+  .masthead__page,
+  .masthead__piece {
     font-size: 15px;
     padding: 5px 8px 4px;
   }
@@ -1258,7 +1308,8 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
     font-size: 18px;
     padding: 4px 7px 3px;
   }
-  .masthead__page {
+  .masthead__page,
+  .masthead__piece {
     font-size: 15px;
     padding: 5px 8px 4px;
   }
