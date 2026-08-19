@@ -1,0 +1,21 @@
+# Los dos paquetes que tienen permiso de correr scripts de instalacion.
+#
+# pnpm 10 en adelante NO corre scripts de postinstall por defecto: es la
+# defensa contra un paquete que ejecuta codigo arbitrario apenas se instala.
+# El costo es que hay que declarar a mano cuales SI, y hasta que se declaren
+# `pnpm install` termina en ERR_PNPM_IGNORED_BUILDS y se lleva puesto el build.
+#
+# Los dos de aca no son opcionales ni son plugins de conveniencia:
+#
+#   esbuild  es lo que Vite usa para transformar. Su script de instalacion
+#            enlaza el binario de la plataforma; sin correrlo no hay binario
+#            que ejecutar y no compila nada.
+#   sharp    es el servicio de imagenes por defecto de Astro. Su script baja
+#            los binarios nativos de libvips para esta arquitectura.
+#
+# `pnpm approve-builds` escribe este archivo con los valores en texto para que
+# los conteste una persona, y quedaron sin contestar: decian literalmente
+# "set this to true or false", que como YAML es una cadena y no un booleano.
+allowBuilds:
+  esbuild: true
+  sharp: true
