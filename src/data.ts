@@ -9,7 +9,6 @@ export const SITE = {
   location: 'Argentina',
   github: 'https://github.com/TanisJam',
   linkedin: 'https://www.linkedin.com/in/mauricionromero/',
-  portfolio: 'https://www.mnr.ar',
   resumePdf: '/resume/Mauricio_cv.pdf',
 };
 
