@@ -1,4 +1,17 @@
-# Los dos paquetes que tienen permiso de correr scripts de instalacion.
+# Este archivo tiene que servirle a DOS pnpm distintos, y cada uno quiere una
+# cosa: la maquina de desarrollo corre pnpm 11 y Vercel corre pnpm 9 —lo elige
+# por la fecha de creacion del proyecto, no por el lockfile— asi que lo que
+# funciona en uno tiene que no romper el otro.
+#
+# `packages` NO es opcional aunque esto no sea un monorepo. Para pnpm 9 este
+# archivo es SOLO un descriptor de workspace, y sin ese campo el install falla
+# entero con "packages field missing or empty" antes de instalar nada. Para
+# pnpm 11 declara este directorio como su propia raiz, que es lo mismo que hace
+# citrus-sinensis.
+packages:
+  - .
+
+# Y los dos paquetes que tienen permiso de correr scripts de instalacion.
 #
 # pnpm 10 en adelante NO corre scripts de postinstall por defecto: es la
 # defensa contra un paquete que ejecuta codigo arbitrario apenas se instala.
@@ -16,6 +29,9 @@
 # `pnpm approve-builds` escribe este archivo con los valores en texto para que
 # los conteste una persona, y quedaron sin contestar: decian literalmente
 # "set this to true or false", que como YAML es una cadena y no un booleano.
+#
+# pnpm 9 ignora esta clave porque no la conoce: la aprobacion de scripts recien
+# aparece en pnpm 10. Ahi los scripts corren solos y no hay nada que aprobar.
 allowBuilds:
   esbuild: true
   sharp: true
