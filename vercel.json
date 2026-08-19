@@ -1,0 +1,7 @@
+{
+  "framework": "astro",
+  "redirects": [
+    { "source": "/es", "destination": "/es/home", "permanent": true },
+    { "source": "/es/", "destination": "/es/home", "permanent": true }
+  ]
+}
