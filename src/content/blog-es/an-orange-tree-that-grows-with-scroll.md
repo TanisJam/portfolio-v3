@@ -14,6 +14,12 @@ tags:
 
 La home de este sitio es un naranjo que crece mientras scrolleás. Nace de una semilla, echa raíz, florece, da fruta, y la fruta se pela y se abre hasta que una semilla se suelta y arranca el ciclo de nuevo. No hay una sola imagen. No hay un solo archivo de audio. Todo se genera, cuadro por cuadro, con dibujo 2D y osciladores.
 
+
+<figure>
+  <img src="/assets/posts/citrus/canopy.jpg" alt="El naranjo con la copa formada, de día" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.50.</b> Un cuadro real de la pieza, no un montaje. Todas las figuras de este post salen de <code>pnpm figures</code>, que maneja la pieza hasta un <code>p</code> exacto y le saca una foto al canvas.</figcaption>
+</figure>
+
 Pero antes de contar cómo, hay que contar por qué. Sin eso, lo que sigue parece una demo técnica, y no lo es.
 
 ## Un sitio personal no es un tablero
@@ -82,7 +88,19 @@ La arquitectura que lo reemplazó: cada planta pasó a ser un array plano de nod
 A[i] = A[padre[i]] + anguloRelativo[i] + viento(profundidad, t, fase);
 ```
 
+
+<figure>
+  <img src="/assets/posts/citrus/diag-array.svg" alt="Diagrama del array plano de nodos con índice de padre" loading="lazy" decoding="async">
+  <figcaption>El padre siempre precede al hijo, así que ningún arco apunta a la izquierda. Esa es toda la garantía que hace falta para recalcular el árbol entero en un solo pase.</figcaption>
+</figure>
+
 El detalle que hace que el viento se vea real: escala con `(profundidad / total) ** 1.6`. Se acumula hacia las puntas igual que en un árbol de verdad — el tronco casi no se mueve, las hojas bailan.
+
+
+<figure>
+  <img src="/assets/posts/citrus/diag-viento.svg" alt="Gráfico de la amplitud del viento por nivel de profundidad" loading="lazy" decoding="async">
+  <figcaption>Lineal se ve como una bandera. Con exponente 1.6 se ve como un árbol.</figcaption>
+</figure>
 
 Cómo no morir de draw calls: juntar todos los segmentos por nivel de profundidad y hacer un solo `stroke()` por nivel, no uno por planta. De ~60 llamadas por árbol a 7.
 
@@ -96,13 +114,37 @@ Acá apareció el pedido que cambió todo: investigar bien primero el ciclo de v
 
 Las curvas de crecimiento dejaron de ser rampas y pasaron a ser escaleras con mesetas alternadas. Es una curva de easing mejor que cualquiera que se me hubiera ocurrido inventando, y no la inventé: la copié de la fisiología. Más adelante, esa misma alternancia va a hacer que las capas de sonido se turnen solas, sin que nadie lo programe.
 
+
+<figure>
+  <img src="/assets/posts/citrus/diag-pulsos.svg" alt="Curvas de crecimiento en escalera alternada contra una rampa" loading="lazy" decoding="async">
+  <figcaption>La curva de easing que no inventé. La copié de la fisiología del cítrico, y años después me devolvió también la automatización de mezcla del audio.</figcaption>
+</figure>
+
 **2. Las semillas de cítrico no pueden esperar.** Son recalcitrantes: mueren si se secan por debajo de ~25% de humedad. No hay latencia, no hay banco de semillas. Germina o muere. Traducido: la caída inicial no tiene pausa dramática. Toca tierra y arranca.
+
+
+<figure>
+  <img src="/assets/posts/citrus/seed.jpg" alt="La semilla germinando sobre la tierra" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.06.</b> Toca tierra y arranca. Sin pausa dramática: una semilla de cítrico que se seca por debajo del 25% de humedad se muere.</figcaption>
+</figure>
 
 **3. De una semilla salen varios brotes.** Poliembrionía: 2,9 a 4,6 embriones por semilla en naranja Valencia. La mayoría son clones nucelares de la madre; uno solo suele ser nuevo. Traducido: brotan cuatro radículas, tres se frenan y se desvanecen.
 
 **4. El 98% de las flores se cae — y queda una marca.** Menos del 2% llega a fruto cosechable. Pero el detalle que vale oro: en la caída de junio el fruto se desprende en la zona C, entre fruto y cáliz. El cáliz queda en el árbol. Traducido: después de la caída quedan estrellitas verdes vacías por toda la copa. Es el tipo de detalle que nadie puede nombrar pero todos registran.
 
+
+<figure>
+  <img src="/assets/posts/citrus/calyx.jpg" alt="La copa después de la caída, con los cálices vacíos" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.68.</b> Las estrellitas verdes son cálices vacíos: el fruto se desprendió en la zona C y el cáliz quedó en la rama. Nadie lo puede nombrar, todos lo registran.</figcaption>
+</figure>
+
 **5. La naranja siempre fue naranja.** Las noches frías degradan la clorofila de la cáscara y dejan ver los carotenoides que ya estaban debajo. En clima cálido la fruta queda verde aunque esté perfectamente madura. Traducido: **el color no avanza con el scroll. Avanza un paso por cada noche fría que pasa en la escena.**
+
+
+<figure>
+  <img src="/assets/posts/citrus/colour.jpg" alt="La fruta virando de verde a naranja en la copa" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.76.</b> El color no avanza con el scroll: avanza un paso por cada noche fría que pasa en la escena.</figcaption>
+</figure>
 
 De yapa, para las hojas: la hoja del cítrico no es simple, es unifoliolada — una hoja compuesta reducida a un solo folíolo, con pecíolo alado y una articulación visible. Más glándulas de aceite que se ven como puntitos translúcidos.
 
@@ -123,7 +165,22 @@ Y acá nació **el bucle invisible**, que es lo único de esta versión que lleg
 
 El tramo final del scroll (`p` de 0.95 a 1.00) renderiza exactamente los mismos píxeles que el tramo inicial. Al llegar al fondo, el scroll salta a `p − 0.95`. Como el render de ambos tramos es idéntico, el salto no cambia un solo píxel. El usuario baja hasta el final y sin darse cuenta está de nuevo arriba.
 
+
+<figure>
+  <img src="/assets/posts/citrus/diag-bucle.svg" alt="Diagrama del bucle: los tramos inicial y final son idénticos" loading="lazy" decoding="async">
+  <figcaption>El salto no cambia un solo píxel porque los dos tramos renderizan lo mismo.</figcaption>
+</figure>
+
 Es un truco barato de escribir y carísimo de sostener, y ahí está la gracia: **obligó a que todo lo demás fuera coherente**. Si el cielo no llega exactamente al mismo color con el que arrancó, se ve. Si la semilla no aterriza exactamente donde empieza la vuelta siguiente, se ve. Un final cualquiera te perdona los desajustes del camino; un ciclo no perdona ninguno. Buena parte de las correcciones de la Parte II existen porque el loop las delató.
+
+
+<figure>
+  <div class="fig-pair">
+    <img src="/assets/posts/citrus/loop-start.jpg" alt="El principio del recorrido" loading="lazy" decoding="async">
+    <img src="/assets/posts/citrus/loop-end.jpg" alt="El final del recorrido" loading="lazy" decoding="async">
+  </div>
+  <figcaption><b>p = 0.048</b> y <b>p = 0.998.</b> El principio y el final del recorrido. No son la misma imagen —el viento corre contra el reloj y la captura no lo congela— pero el test de identidad sí congela el tiempo, y ahí salen iguales hasta la última llamada de dibujo.</figcaption>
+</figure>
 
 En esta versión, la posición del mouse decidía qué fruta y qué gajo se abrían: 15 finales posibles, 3 frutas × 5 gajos. Guardá ese dato. En la Parte II se muere.
 
@@ -135,7 +192,7 @@ Hasta acá era una exploración: un archivo, cero dependencias, 45 KB. Lo que si
 
 ### La migración: React se queda con la página, el motor con el píxel
 
-| | quién |
+| qué | quién |
 |---|---|
 | Estructura, contenido, orden, accesibilidad | React |
 | Etapa, edad, nota, esquema claro/oscuro, acento | React (estado) |
@@ -153,6 +210,12 @@ Y `destroy()` no es prolijidad. StrictMode monta, desmonta y vuelve a montar cad
 En el mismo pase, tres problemas que sólo se ven mirando, no leyendo código.
 
 **Líneas demasiado perfectas.** Las raíces se trazaban con `lineTo` puro — polilíneas rectas con codos, justo en la fase que narra el hidrotropismo: lo decía el texto y lo desmentía el trazo. El tronco nacía en la vertical exacta, y la curvatura de rama era `sin(ph) * 0.052` pelado, así que cualquier rama con `ph` cerca de un cero quedaba perfectamente recta — y el tronco era una de ésas.
+
+
+<figure>
+  <img src="/assets/posts/citrus/roots.jpg" alt="El sistema de raíces bajo tierra" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.28.</b> La raíz siguiendo el gradiente de humedad. Antes se trazaba con <code>lineTo</code> puro: polilíneas rectas con codos, justo en la fase que narra el hidrotropismo.</figcaption>
+</figure>
 
 **Textura.** Granulación como alta frecuencia por baja, cada una en su espacio: el grano del papel en pantalla, el cúmulo del pigmento en mundo. Oscurecimiento de borde donde hay mancha que se seca. Peso de línea cargado del lado en sombra. Bordes perdidos hacia la profundidad, que además disuelve la jaula de alambre en que se leían las raíces del fondo.
 
@@ -181,6 +244,12 @@ En el mismo movimiento se fue `Cue`, el cartel que pedía mover el mouse. **Un c
 
 **La copa estaba hueca.** Había una hoja por nodo terminal, y en un árbol de siete niveles todos los terminales están sobre el perímetro: salía una corona de follaje con el esqueleto pelado adentro. Ahora las hojas nacen a lo largo del brote con densidad proporcional a su longitud, y las de sombra van más grandes, más planas y más viejas.
 
+
+<figure>
+  <img src="/assets/posts/citrus/flush.jpg" alt="El árbol joven, todavía sin flores" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.38.</b> Juvenil y espinoso. Un cítrico de semilla tarda de tres a siete años en poder florecer — a veces quince.</figcaption>
+</figure>
+
 Aun así el centro seguía vacío, y ahí el problema no era de hojas sino de madera: el árbol se abre en abanico, con trece ramas de nivel 3 contra ciento sesenta y una ramitas en el borde. Se agregaron brotes interiores —los que la poda de cítricos llama *chupón* cuando se va de largo— con su propio generador, para que el árbol de siempre no cambiara ni una rama.
 
 **Y acá me corrijo a mí mismo.** En la exploración había declarado una licencia artística: sobrevivían 3 de 46 flores, o sea 6,5%, no el <2% real. Estaba mal el razonamiento, no el número. El 2% de cuaje es sobre las flores reales del árbol, que son miles; aplicárselo a las cuarenta y seis dibujadas es **contar dos veces la misma poda**. Ahora son nueve frutos, y no hay licencia que declarar.
@@ -198,6 +267,12 @@ Aun así el centro seguía vacío, y ahí el problema no era de hojas sino de ma
 La versión anterior movía ocho sectores de anillo hacia afuera. Funcionaba como reparto de una torta: la piel no se rompía, no se doblaba y nunca mostraba su lado de adentro.
 
 Ahora hay una **línea de pelado** que baja por la fruta. Debajo, la piel sigue pegada y está exactamente sobre la esfera. Arriba está libre: sale por la tangente y sigue un arco de curvatura constante cuya longitud es exactamente la piel ya soltada, así que no se estira ni se encoge. La proyección ortográfica de un gore visto de costado es literalmente `x = u·sen ψ`, `y = −v`: el par `(u, v)` que la deformación calcula en el plano meridiano **ya es el dibujo**. Lo único que hace falta agregar es el orden de pintado por `z`.
+
+
+<figure>
+  <img src="/assets/posts/citrus/peel.jpg" alt="La naranja a medio pelar, con las tiras de cáscara levantadas" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.856.</b> Debajo de la línea de pelado la piel sigue exactamente sobre la esfera. Arriba sale por la tangente y sigue un arco cuya longitud es exactamente la piel ya soltada: no se estira ni se encoge.</figcaption>
+</figure>
 
 Después la cáscara **cae** —no se desvanece— y el albedo se **abre desde el centro** —tampoco se desvanece—. Las dos cosas por la misma razón: bajar el alpha delata las costuras internas, y un velo blanco al 50% sobre la pulpa manda los naranjas al gris justo en el frame más importante de la pieza.
 
@@ -249,6 +324,12 @@ La primera versión disparaba un sonido al cruzar un umbral, y corría contra el
 
 Ahora una transformación no es un evento: es un **estado**. Catorce capas cuya ganancia sale de cuánto se está moviendo la cosa en este instante. Si el lector frena, la fibra sigue cediendo medio segundo y muere sola. Si vuelve, suena igual — la cáscara volviéndose a poner hace el mismo ruido que la cáscara abriéndose, porque es la misma fibra rozando.
 
+
+<figure>
+  <img src="/assets/posts/citrus/diag-audio.svg" alt="Diagrama comparando sonido por evento contra sonido por estado" loading="lazy" decoding="async">
+  <figcaption>El mismo error que el caché de bitmaps, en otro dominio: modelar como instantáneo algo que el usuario controla de forma continua.</figcaption>
+</figure>
+
 Para eso el motor tuvo que aprender a contar cuánto se mueve cada cosa: `sig` pasó de diez señales a quince. Las dos interesantes son `bud` y `leaf`, porque no son el tamaño del árbol sino **cuánta actividad hay ahora mismo**. Se calculan con ocho pasos por frame, uno por nivel de profundidad, en vez de recorrer las mil doscientas ramas.
 
 Dos detalles que hacen que funcione:
@@ -274,6 +355,12 @@ El texto de relleno se fue. Los seis frutos con nombre de la copa **son** los se
 El trabajo diario no está entre los frutos, a propósito. No es algo que se corta y se abre; es el árbol que se sigue cuidando. Vive en la banda *Currently*.
 
 Y cada gajo aprendió a explicarse: al apoyar el puntero sobre un carpelo, la lámina escribe al pie qué es esa pieza del proyecto, letra por letra, con el sangrado de la tinta antes del trazo. Entre un gajo y otro el pincel se levanta: el texto viejo se retira, hay un hueco, y recién ahí empieza el nuevo.
+
+
+<figure>
+  <img src="/assets/posts/citrus/carpels.jpg" alt="Los gajos de la naranja separados y rotulados con las features del proyecto" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.93.</b> La metáfora hecha dibujo: la naranja es un proyecto, cada gajo una feature. Los rótulos salen del mismo array que dibuja el canvas.</figcaption>
+</figure>
 
 Tres decisiones que valen más que el efecto:
 
@@ -360,7 +447,7 @@ Cuando cambia el diseño, el test no se borra: se le cambia la pregunta.
 
 ## Números
 
-| | |
+| medida | valor |
 |---|---|
 | Nodos del árbol | 396 |
 | Nodos de raíz | 732 |

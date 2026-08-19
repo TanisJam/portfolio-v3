@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" role="img" aria-label="Wind accumulates toward the tips: (depth / total) ** 1.6">
+<title>Wind accumulates toward the tips: (depth / total) ** 1.6</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2A2926"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2C9174"/></marker></defs>
+<text x="26" y="26" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#2A2926" text-anchor="start" font-weight="700" font-style="normal">Wind accumulates toward the tips: (depth / total) ** 1.6</text>
+<text x="26" y="46" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12.5" fill="#8A857C" text-anchor="start" font-weight="400" font-style="normal">The trunk barely moves. The leaves dance.</text>
+<rect x="60.0" y="210.5" width="70.5" height="1.5" fill="#2C9174" opacity="0.30"/>
+<text x="95.25" y="230" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">0</text>
+<text x="95.25" y="202.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">0.00</text>
+<rect x="142.5" y="206.13298677486273" width="70.5" height="5.867013225137283" fill="#2C9174" opacity="0.33"/>
+<text x="177.75" y="230" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">1</text>
+<text x="177.75" y="198.13298677486273" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">0.04</text>
+<rect x="225.0" y="194.21454171744764" width="70.5" height="17.785458282552362" fill="#2C9174" opacity="0.39"/>
+<text x="260.25" y="230" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">2</text>
+<text x="260.25" y="186.21454171744764" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">0.13</text>
+<rect x="307.5" y="177.97398612736222" width="70.5" height="34.026013872637776" fill="#2C9174" opacity="0.47"/>
+<text x="342.75" y="230" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">3</text>
+<text x="342.75" y="169.97398612736222" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">0.26</text>
+<rect x="390.0" y="158.08457247631162" width="70.5" height="53.91542752368838" fill="#2C9174" opacity="0.57"/>
+<text x="425.25" y="230" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">4</text>
+<text x="425.25" y="150.08457247631162" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">0.41</text>
+<rect x="472.5" y="134.95063317686152" width="70.5" height="77.04936682313848" fill="#2C9174" opacity="0.68"/>
+<text x="507.75" y="230" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">5</text>
+<text x="507.75" y="126.95063317686152" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">0.58</text>
+<rect x="555.0" y="108.8524141618606" width="70.5" height="103.1475858381394" fill="#2C9174" opacity="0.81"/>
+<text x="590.25" y="230" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">6</text>
+<text x="590.25" y="100.8524141618606" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">0.78</text>
+<rect x="637.5" y="80.0" width="70.5" height="132.0" fill="#2C9174" opacity="0.95"/>
+<text x="672.75" y="230" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">7</text>
+<text x="672.75" y="72.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">1.00</text>
+<line x1="60" y1="212" x2="720" y2="212" stroke="#2A2926" stroke-width="1.5"/>
+<text x="60" y="252" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" fill="#8A857C" text-anchor="start" font-weight="400" font-style="normal">depth level  ->  trunk at the left, tip at the right</text>
+<text x="26" y="288" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12.5" fill="#8A857C" text-anchor="start" font-weight="400" font-style="italic">Linear looks like a flag. With exponent 1.6 it looks like a tree.</text>
+</svg>

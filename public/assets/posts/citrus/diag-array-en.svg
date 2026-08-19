@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 262" width="800" height="262" role="img" aria-label="Every plant is a flat array. The parent ALWAYS precedes the child.">
+<title>Every plant is a flat array. The parent ALWAYS precedes the child.</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2A2926"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2C9174"/></marker></defs>
+<text x="26" y="26" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#2A2926" text-anchor="start" font-weight="700" font-style="normal">Every plant is a flat array. The parent ALWAYS precedes the child.</text>
+<text x="26" y="46" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12.5" fill="#8A857C" text-anchor="start" font-weight="400" font-style="normal">That is why accumulated angles are recomputed in a single forward pass, per frame.</text>
+<rect x="26" y="96" width="74" height="42" fill="none" stroke="#2A2926" stroke-width="1.5"/>
+<text x="63.0" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">i=0</text>
+<text x="63.0" y="123" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">—</text>
+<rect x="106" y="96" width="74" height="42" fill="none" stroke="#2A2926" stroke-width="1.5"/>
+<text x="143.0" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">i=1</text>
+<text x="143.0" y="123" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">parent 0</text>
+<rect x="186" y="96" width="74" height="42" fill="none" stroke="#2A2926" stroke-width="1.5"/>
+<text x="223.0" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">i=2</text>
+<text x="223.0" y="123" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">parent 0</text>
+<rect x="266" y="96" width="74" height="42" fill="none" stroke="#2A2926" stroke-width="1.5"/>
+<text x="303.0" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">i=3</text>
+<text x="303.0" y="123" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">parent 1</text>
+<rect x="346" y="96" width="74" height="42" fill="none" stroke="#2A2926" stroke-width="1.5"/>
+<text x="383.0" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">i=4</text>
+<text x="383.0" y="123" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">parent 1</text>
+<rect x="426" y="96" width="74" height="42" fill="none" stroke="#2A2926" stroke-width="1.5"/>
+<text x="463.0" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">i=5</text>
+<text x="463.0" y="123" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">parent 2</text>
+<rect x="506" y="96" width="74" height="42" fill="none" stroke="#2A2926" stroke-width="1.5"/>
+<text x="543.0" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">i=6</text>
+<text x="543.0" y="123" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">parent 3</text>
+<rect x="586" y="96" width="74" height="42" fill="none" stroke="#2A2926" stroke-width="1.5"/>
+<text x="623.0" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8A857C" text-anchor="middle" font-weight="400" font-style="normal">i=7</text>
+<text x="623.0" y="123" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#2A2926" text-anchor="middle" font-weight="400" font-style="normal">parent 5</text>
+<path d="M63.0 142 C 63.0 159.2, 143.0 159.2, 143.0 144" fill="none" stroke="#2C9174" stroke-width="1.4" marker-end="url(#ag)" opacity=".85"/>
+<path d="M63.0 142 C 63.0 170.4, 223.0 170.4, 223.0 144" fill="none" stroke="#2C9174" stroke-width="1.4" marker-end="url(#ag)" opacity=".85"/>
+<path d="M143.0 142 C 143.0 170.4, 303.0 170.4, 303.0 144" fill="none" stroke="#2C9174" stroke-width="1.4" marker-end="url(#ag)" opacity=".85"/>
+<path d="M143.0 142 C 143.0 181.6, 383.0 181.6, 383.0 144" fill="none" stroke="#2C9174" stroke-width="1.4" marker-end="url(#ag)" opacity=".85"/>
+<path d="M223.0 142 C 223.0 181.6, 463.0 181.6, 463.0 144" fill="none" stroke="#2C9174" stroke-width="1.4" marker-end="url(#ag)" opacity=".85"/>
+<path d="M303.0 142 C 303.0 181.6, 543.0 181.6, 543.0 144" fill="none" stroke="#2C9174" stroke-width="1.4" marker-end="url(#ag)" opacity=".85"/>
+<path d="M463.0 142 C 463.0 170.4, 623.0 170.4, 623.0 144" fill="none" stroke="#2C9174" stroke-width="1.4" marker-end="url(#ag)" opacity=".85"/>
+<text x="26" y="222" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#2A2926" text-anchor="start" font-weight="400" font-style="normal">A[i] = A[parent[i]] + relativeAngle[i] + wind(depth, t, phase)</text>
+<text x="26" y="244" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12.5" fill="#8A857C" text-anchor="start" font-weight="400" font-style="italic">No arc points left. That is the whole guarantee needed.</text>
+</svg>

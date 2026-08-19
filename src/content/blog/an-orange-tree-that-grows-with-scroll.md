@@ -14,6 +14,12 @@ tags:
 
 The homepage of this site is an orange tree that grows as you scroll. It starts as a seed, puts down roots, flowers, bears fruit, and the fruit peels open until a seed comes loose and the cycle starts again. There isn't a single image. There isn't a single audio file. Everything is generated, frame by frame, with 2D drawing and oscillators.
 
+
+<figure>
+  <img src="/assets/posts/citrus/canopy.jpg" alt="The orange tree with a full canopy, in daylight" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.50.</b> A real frame of the piece, not a mockup. Every figure in this post comes from <code>pnpm figures</code>, which drives the piece to an exact <code>p</code> and photographs the canvas.</figcaption>
+</figure>
+
 But before the how, the why. Without it, what follows reads like a technical demo, and it isn't one.
 
 ## A personal site is not a board
@@ -82,7 +88,19 @@ The architecture that replaced it: every plant became a flat array of nodes with
 A[i] = A[parent[i]] + relativeAngle[i] + wind(depth, t, phase);
 ```
 
+
+<figure>
+  <img src="/assets/posts/citrus/diag-array-en.svg" alt="Diagram of the flat node array with parent indices" loading="lazy" decoding="async">
+  <figcaption>The parent always precedes the child, so no arc points left. That is the whole guarantee needed to recompute the entire tree in one forward pass.</figcaption>
+</figure>
+
 The detail that makes the wind look real: it scales with `(depth / total) ** 1.6`. It accumulates toward the tips the way it does in a real tree — the trunk barely moves, the leaves dance.
+
+
+<figure>
+  <img src="/assets/posts/citrus/diag-viento-en.svg" alt="Chart of wind amplitude by depth level" loading="lazy" decoding="async">
+  <figcaption>Linear looks like a flag. With an exponent of 1.6 it looks like a tree.</figcaption>
+</figure>
 
 How not to die of draw calls: group every segment by depth level and issue a single `stroke()` per level, not one per plant. From ~60 calls per tree down to 7.
 
@@ -96,13 +114,37 @@ This is where the ask that changed everything showed up: research the life cycle
 
 The growth curves stopped being ramps and became staircases with alternating plateaus. It's a better easing curve than anything I would have come up with by inventing, and I didn't invent it: I copied it from physiology. Later on, that same alternation is what makes the sound layers take turns on their own, with nobody programming it.
 
+
+<figure>
+  <img src="/assets/posts/citrus/diag-pulsos-en.svg" alt="Growth curves as an alternating staircase against a straight ramp" loading="lazy" decoding="async">
+  <figcaption>The easing curve I did not invent. I copied it from citrus physiology, and it later handed me the mix automation for the audio as well.</figcaption>
+</figure>
+
 **2. Citrus seeds can't wait.** They're recalcitrant: they die if they dry below ~25% moisture. No dormancy, no seed bank. Germinate or die. Translated: the initial fall has no dramatic pause. It hits the ground and starts.
+
+
+<figure>
+  <img src="/assets/posts/citrus/seed.jpg" alt="The seed germinating on the soil" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.06.</b> It hits the ground and starts. No dramatic pause: a citrus seed that dries below 25% moisture simply dies.</figcaption>
+</figure>
 
 **3. One seed produces several shoots.** Polyembryony: 2.9 to 4.6 embryos per seed in Valencia oranges. Most are nucellar clones of the mother; usually only one is new. Translated: four radicles sprout, three stall and fade.
 
 **4. 98% of the flowers drop — and they leave a mark.** Less than 2% make it to harvestable fruit. But here's the detail worth gold: in June drop, the fruit detaches at zone C, between fruit and calyx. The calyx stays on the tree. Translated: after the drop, empty little green stars are left all over the canopy. It's the kind of detail nobody can name but everybody registers.
 
+
+<figure>
+  <img src="/assets/posts/citrus/calyx.jpg" alt="The canopy after June drop, showing empty calyxes" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.68.</b> The little green stars are empty calyxes: the fruitlet detached at zone C and the calyx stayed on the branch. Nobody can name it, everybody registers it.</figcaption>
+</figure>
+
 **5. The orange was always orange.** Cold nights degrade the chlorophyll in the rind and reveal the carotenoids that were already underneath. In warm climates the fruit stays green even when it's perfectly ripe. Translated: **the color doesn't advance with scroll. It advances one step per cold night that passes in the scene.**
+
+
+<figure>
+  <img src="/assets/posts/citrus/colour.jpg" alt="Fruit turning from green to orange in the canopy" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.76.</b> The color does not advance with scroll: it advances one step per cold night that passes in the scene.</figcaption>
+</figure>
 
 And a bonus, for the leaves: a citrus leaf isn't simple, it's unifoliolate — a compound leaf reduced to a single leaflet, with a winged petiole and a visible joint. Plus oil glands that read as translucent dots.
 
@@ -123,7 +165,22 @@ And this is where **the invisible loop** was born, the only thing from this vers
 
 The final stretch of scroll (`p` from 0.95 to 1.00) renders exactly the same pixels as the opening stretch. When you hit the bottom, scroll jumps to `p − 0.95`. Since both stretches render identically, the jump doesn't change a single pixel. You scroll all the way down and, without noticing, you're back at the top.
 
+
+<figure>
+  <img src="/assets/posts/citrus/diag-bucle-en.svg" alt="Diagram of the loop: the opening and closing stretches are identical" loading="lazy" decoding="async">
+  <figcaption>The jump changes no pixels because both stretches render the same thing.</figcaption>
+</figure>
+
 It's a cheap trick to write and an expensive one to sustain, and that's the point: **it forced everything else to be coherent**. If the sky doesn't land on exactly the color it started from, you see it. If the seed doesn't land exactly where the next turn begins, you see it. Any ordinary ending forgives the mismatches you accumulated along the way; a cycle forgives none of them. A good share of the corrections in Part II exist because the loop exposed them.
+
+
+<figure>
+  <div class="fig-pair">
+    <img src="/assets/posts/citrus/loop-start.jpg" alt="The start of the run" loading="lazy" decoding="async">
+    <img src="/assets/posts/citrus/loop-end.jpg" alt="The end of the run" loading="lazy" decoding="async">
+  </div>
+  <figcaption><b>p = 0.048</b> and <b>p = 0.998.</b> The beginning and the end of the run. They are not the same image — wind runs against the clock and the capture does not freeze it — but the identity test does freeze time, and there they come out identical down to the last drawing call.</figcaption>
+</figure>
 
 In this version, mouse position decided which fruit and which segment opened: 15 possible endings, 3 fruits × 5 segments. Hold on to that number. It dies in Part II.
 
@@ -135,7 +192,7 @@ Up to here it was an exploration: one file, zero dependencies, 45 KB. What follo
 
 ### The migration: React keeps the page, the engine keeps the pixel
 
-| | who |
+| what | who |
 |---|---|
 | Structure, content, order, accessibility | React |
 | Stage, age, note, light/dark scheme, accent | React (state) |
@@ -153,6 +210,12 @@ And `destroy()` isn't tidiness. StrictMode mounts, unmounts and remounts every c
 In the same pass, three problems you only see by looking, not by reading code.
 
 **Lines that were too perfect.** The roots were traced with plain `lineTo` — straight polylines with elbows, right in the phase that narrates hydrotropism: the text said one thing and the stroke denied it. The trunk was born on the exact vertical, and branch curvature was a bare `sin(ph) * 0.052`, so any branch with `ph` near a zero came out perfectly straight — and the trunk was one of those.
+
+
+<figure>
+  <img src="/assets/posts/citrus/roots.jpg" alt="The root system below ground" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.28.</b> The root following the moisture gradient. It used to be traced with plain <code>lineTo</code>: straight polylines with elbows, right in the phase that narrates hydrotropism.</figcaption>
+</figure>
 
 **Texture.** Grain as high frequency over low, each in its own space: paper grain in screen space, pigment pooling in world space. Edge darkening where a wash dries. Line weight loaded on the shadow side. Lost edges toward depth, which also dissolves the wire cage the background roots used to read as.
 
@@ -181,6 +244,12 @@ In the same move, `Cue` left — the sign that asked you to move the mouse. **A 
 
 **The canopy was hollow.** There was one leaf per terminal node, and in a seven-level tree every terminal sits on the perimeter: you got a crown of foliage with a bare skeleton inside. Now leaves are born along the shoot with density proportional to its length, and shade leaves come out larger, flatter and older.
 
+
+<figure>
+  <img src="/assets/posts/citrus/flush.jpg" alt="The young tree, still without flowers" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.38.</b> Juvenile and thorny. A citrus grown from seed takes three to seven years before it can flower — sometimes fifteen.</figcaption>
+</figure>
+
 Even so the center stayed empty, and there the problem wasn't leaves, it was wood: the tree fans out, with thirteen level-3 branches against a hundred and sixty-one twigs at the edge. Interior shoots were added — what citrus pruning calls a *water sprout* when it runs long — with their own generator, so the tree I already had wouldn't change a single branch.
 
 **And here I correct myself.** In the exploration I had declared an artistic license: 3 of 46 flowers survived, which is 6.5%, not the real <2%. The reasoning was wrong, not the number. The 2% fruit set is measured against the tree's real flowers, which number in the thousands; applying it to the forty-six drawn ones is **counting the same pruning twice**. Now there are nine fruits, and there's no license to declare.
@@ -198,6 +267,12 @@ Even so the center stayed empty, and there the problem wasn't leaves, it was woo
 The previous version slid eight annulus sectors outward. It worked like slicing a cake: the skin never broke, never folded and never showed its inner side.
 
 Now there's a **peel line** running down the fruit. Below it, the skin is still attached and sits exactly on the sphere. Above it, it's free: it leaves along the tangent and follows a constant-curvature arc whose length is exactly the skin already released, so it neither stretches nor shrinks. The orthographic projection of a gore seen from the side is literally `x = u·sin ψ`, `y = −v`: the `(u, v)` pair the deformation computes in the meridian plane **is already the drawing**. The only thing left to add is paint order by `z`.
+
+
+<figure>
+  <img src="/assets/posts/citrus/peel.jpg" alt="The half-peeled orange with strips of rind lifted away" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.856.</b> Below the peel line the skin still sits exactly on the sphere. Above it, it leaves along the tangent and follows an arc whose length is exactly the skin already released: it neither stretches nor shrinks.</figcaption>
+</figure>
 
 Then the rind **falls** — it doesn't fade — and the albedo **opens from the center** — it doesn't fade either. Both for the same reason: dropping alpha exposes the internal seams, and a 50% white veil over the pulp sends the oranges to gray in the single most important frame of the piece.
 
@@ -249,6 +324,12 @@ The first version fired a sound when a threshold was crossed, and ran it against
 
 Now a transformation isn't an event: it's a **state**. Fourteen layers whose gain comes from how much the thing is moving right now. If the reader stops, the fiber keeps giving way for half a second and dies on its own. If they scroll back, it sounds the same — the rind going back on makes the same noise as the rind opening, because it's the same fiber rubbing.
 
+
+<figure>
+  <img src="/assets/posts/citrus/diag-audio-en.svg" alt="Diagram comparing event-driven sound against state-driven sound" loading="lazy" decoding="async">
+  <figcaption>The same mistake as the bitmap cache, in another domain: modeling as instantaneous something the user controls continuously.</figcaption>
+</figure>
+
 For that, the engine had to learn to count how much each thing is moving: `sig` went from ten signals to fifteen. The two interesting ones are `bud` and `leaf`, because they aren't the size of the tree but **how much activity there is right now**. They're computed with eight steps per frame, one per depth level, instead of walking the twelve hundred branches.
 
 Two details make it work:
@@ -274,6 +355,12 @@ The placeholder text is gone. The six named fruits in the canopy **are** the six
 My day job isn't among the fruits, on purpose. It isn't something you cut open; it's the tree you keep tending. It lives in the *Currently* band.
 
 And every segment learned to explain itself: hovering the pointer over a carpel, the sheet writes at the foot what that piece of the project is, letter by letter, with the ink bleeding before the stroke. Between one segment and the next the brush lifts: the old text withdraws, there's a gap, and only then does the new one start.
+
+
+<figure>
+  <img src="/assets/posts/citrus/carpels.jpg" alt="The orange segments separated and labeled with the project features" loading="lazy" decoding="async">
+  <figcaption><b>p = 0.93.</b> The metaphor made literal: the orange is a project, each segment a feature. The labels come from the same array that draws the canvas.</figcaption>
+</figure>
 
 Three decisions worth more than the effect:
 
@@ -360,7 +447,7 @@ When the design changes, you don't delete the test: you change its question.
 
 ## Numbers
 
-| | |
+| measure | value |
 |---|---|
 | Tree nodes | 396 |
 | Root nodes | 732 |

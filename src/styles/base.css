@@ -1150,6 +1150,103 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
 }
 .article strong { color: var(--c-dark); font-weight: 700; }
 
+/* --- figuras, tablas y codigo dentro de un post ---
+   Nada de esto existia: `.article` solo vestia parrafos, titulos y listas. Un
+   post con capturas, tablas o bloques de codigo se caia del ancho de la columna
+   porque `img`, `table` y `pre` traen el tamano de su contenido, no el del
+   contenedor. */
+
+/* La figura respira mas que un parrafo y se permite pasarse del ancho de
+   lectura: 68ch es una medida para TEXTO, y una captura de la pieza adentro de
+   esa caja se lee como una estampilla. */
+.article figure {
+  margin: 28px 0;
+  width: 100%;
+}
+.article figure > img,
+.article p > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--c-dark);
+  box-shadow: 3px 3px 0 1px var(--c-dark);
+}
+.article figcaption {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 150%;
+  color: var(--c-dark);
+  opacity: .78;
+  margin-top: 10px;
+  padding-left: 2px;
+  border-left: 2px solid var(--c-primary);
+  padding-left: 10px;
+}
+.article figcaption b { font-weight: 700; opacity: 1; }
+
+/* El par del bucle: dos cuadros que tienen que leerse COMO UNO. En columna
+   pierden el sentido, asi que van al lado y solo se apilan cuando ya no entran
+   sin volverse ilegibles. */
+.article .fig-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 640px) {
+  .article .fig-pair { grid-template-columns: 1fr; }
+}
+
+/* Las tablas venian con el default del navegador —sin bordes, sin ritmo, con
+   la serif del cuerpo— justo en un post que tiene seis. */
+.article .table-wrap { overflow-x: auto; margin: 0 0 20px; }
+.article table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+.article thead th {
+  text-align: left;
+  font-family: var(--font-serif);
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: .04em;
+  border-bottom: 2px solid var(--c-dark);
+  padding: 8px 10px 6px;
+}
+.article tbody td {
+  padding: 8px 10px;
+  border-bottom: 1px solid color-mix(in srgb, var(--c-dark) 22%, transparent);
+  vertical-align: top;
+  line-height: 150%;
+}
+.article tbody tr:last-child td { border-bottom: 1px solid var(--c-dark); }
+/* Una columna de numeros que se lee de arriba abajo tiene que estar alineada;
+   pero solo cuando la celda ES un numero, no cuando arranca con uno. */
+.article tbody td:only-of-type { text-align: left; }
+
+/* Astro resuelve el color del codigo con Shiki y lo mete en linea, pero el
+   ancho es problema de la pagina: una linea larga empujaba el documento
+   entero hacia el costado. */
+.article pre {
+  overflow-x: auto;
+  padding: 14px 16px;
+  margin: 0 0 20px;
+  border: 1px solid var(--c-dark);
+  font-size: 13px;
+  line-height: 160%;
+}
+.article pre code { font-size: inherit; white-space: pre; }
+.article :not(pre) > code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .88em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--c-dark) 9%, transparent);
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 480px) {
   body.page { padding: 12px 8px 96px; }
   .sheet { padding: 14px; }
