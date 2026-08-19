@@ -15,11 +15,8 @@ export const SITE = {
 
 export const HOME = {
   eyebrow: 'Personal site',
-  title: 'Software, writing, and the systems behind good product work.',
   intro:
     'I am Mauricio Romero, a software developer currently working at Aerolab. I enjoy building practical interfaces, leading frontend-heavy initiatives, and documenting the ideas that make teams work better.',
-  summary:
-    'This site is now my personal hub: writing lives on the homepage and blog, while my professional profile has its own place in /resume.',
   highlights: [
     'Currently building internal systems at Aerolab',
     'Helping teams across 40+ Endeavor offices access critical information',
