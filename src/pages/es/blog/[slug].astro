@@ -1,6 +1,7 @@
 ---
 import Main from '@layouts/main.astro';
 import { getCollection, render } from 'astro:content';
+import { formatPostDate } from '@utils/date';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog-es', ({ data }) => !data.draft);
@@ -12,9 +13,6 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-
-const fmtDate = (d: Date) =>
-  d.toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: '2-digit' });
 ---
 
 <Main
@@ -26,7 +24,7 @@ const fmtDate = (d: Date) =>
     <div style="margin-bottom: 10px;">
       <a class="link-underline" href="/es/blog">← Todos los posts</a>
     </div>
-    <div class="label" style="margin-bottom: 6px;">{fmtDate(post.data.publishedAt)}</div>
+    <div class="label" style="margin-bottom: 6px;">{formatPostDate(post.data.publishedAt, 'es')}</div>
     <h1 class="page-title" style="font-size: clamp(38px, 10vw, 56px);">{post.data.title}</h1>
     <p class="lead" style="margin-top: 10px;">{post.data.description}</p>
     <div style="display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 28px;">
