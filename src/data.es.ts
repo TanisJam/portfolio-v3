@@ -155,9 +155,9 @@ export const PROJECTS_ES = [
     title: 'Just a Drop',
     subtitle: 'Drops de audio efímeros que se borran tras una escucha',
     description:
-      'Grabás una nota de voz en el navegador, obtenés un link corto para compartir y lo enviás: quien lo recibe lo escucha una sola vez y desaparece. Los uploads se suben por chunks a Cloudflare R2, Upstash Redis impone el TTL de una escucha y un cron horario en Vercel limpia los drops vencidos.',
-    techs: ['Next.js', 'TypeScript', 'Cloudflare R2', 'Upstash Redis', 'Vercel'],
-    live: '',
+      'Grabás una nota de voz en el navegador, obtenés un link corto para compartir y lo enviás: quien lo recibe lo escucha una sola vez y desaparece. Los uploads se suben por chunks a un MinIO self-hosted, Redis impone el TTL de una escucha y un cron diario en Vercel limpia los drops vencidos: todo el backend corre en mi homelab, expuesto por un túnel de Cloudflare.',
+    techs: ['Next.js', 'TypeScript', 'MinIO', 'Redis', 'Cloudflare Tunnel', 'Vercel'],
+    live: 'https://just-a-drop.mnr.ar',
     source: 'https://github.com/TanisJam/just-a-drop',
     tag: 'APP',
     accent: 'green',

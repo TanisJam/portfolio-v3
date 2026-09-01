@@ -196,9 +196,9 @@ export const PROJECTS = [
     title: 'Just a Drop',
     subtitle: 'Ephemeral audio drops that vanish after one listen',
     description:
-      'Record a voice note in the browser, get a short shareable link, and send it — the recipient plays it once, then it is gone. Chunked uploads stream to Cloudflare R2, Upstash Redis enforces the one-listen TTL, and an hourly Vercel cron clears expired drops.',
-    techs: ['Next.js', 'TypeScript', 'Cloudflare R2', 'Upstash Redis', 'Vercel'],
-    live: '',
+      'Record a voice note in the browser, get a short shareable link, and send it — the recipient plays it once, then it is gone. Chunked uploads stream to a self-hosted MinIO store, Redis enforces the one-listen TTL, and a daily Vercel cron clears expired drops — the whole backend runs on my homelab, reached through a Cloudflare Tunnel.',
+    techs: ['Next.js', 'TypeScript', 'MinIO', 'Redis', 'Cloudflare Tunnel', 'Vercel'],
+    live: 'https://just-a-drop.mnr.ar',
     source: 'https://github.com/TanisJam/just-a-drop',
     tag: 'APP',
     accent: 'green',
