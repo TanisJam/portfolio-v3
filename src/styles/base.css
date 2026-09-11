@@ -10,36 +10,35 @@
 */
 @font-face {
   font-family: "Kreon";
-  src: url("/fonts/Kreon-VariableFont_wght.ttf") format("truetype-variations"),
-       url("/fonts/Kreon-VariableFont_wght.ttf") format("truetype");
+  src: url("/fonts/Kreon-VariableFont_wght.woff2") format("woff2");
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Biryani";
-  src: url("/fonts/Biryani-Regular.ttf") format("truetype");
+  src: url("/fonts/Biryani-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Biryani";
-  src: url("/fonts/Biryani-Bold.ttf") format("truetype");
+  src: url("/fonts/Biryani-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Ultra";
-  src: url("/fonts/Ultra-Regular.ttf") format("truetype");
+  src: url("/fonts/Ultra-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Nothing You Could Do";
-  src: url("/fonts/NothingYouCouldDo-Regular.ttf") format("truetype");
+  src: url("/fonts/NothingYouCouldDo-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -759,103 +758,6 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
   .sheet { padding: 18px; }
 }
 
-@media (max-width: 480px) {
-  body.page { padding: 12px 8px 96px; }
-  .sheet { padding: 14px; }
-
-  .masthead {
-    padding: 16px 12px 14px;
-  }
-  .masthead__eyebrow {
-    font-size: 18px;
-    padding: 4px 7px 3px;
-  }
-  .masthead__page,
-  .masthead__piece {
-    font-size: 15px;
-    padding: 5px 8px 4px;
-  }
-  .masthead__title {
-    font-size: 48px !important;
-  }
-  .masthead__script {
-    font-size: 26px;
-  }
-
-  .nav-chips {
-    gap: 8px;
-  }
-  .nav-chip {
-    flex: 1 1 calc(50% - 4px);
-    justify-content: center;
-    font-size: 15px;
-    padding: 10px 12px 8px;
-  }
-
-  .sheet h1.page-title {
-    font-size: clamp(24px, 8vw, 28px) !important;
-    line-height: 0.92 !important;
-    text-shadow: 1.5px 1.5px 0 rgba(42,41,38,.85) !important;
-  }
-  .home-hero-card {
-    justify-content: flex-start;
-    gap: 12px;
-    padding: 16px 14px;
-  }
-  .home-hero-card__headline {
-    font-size: clamp(30px, 12vw, 36px) !important;
-    line-height: 0.9 !important;
-    text-shadow: 1.5px 1.5px 0 rgba(42,41,38,.5);
-  }
-  .home-hero-card__body {
-    font-size: 12px !important;
-    line-height: 1.45 !important;
-  }
-  .page-sub {
-    font-size: clamp(20px, 8vw, 32px);
-  }
-  .lead {
-    font-size: 16px;
-  }
-  .display-heading {
-    font-size: 36px;
-  }
-  .stamp-btn {
-    width: 100%;
-    justify-content: center;
-    white-space: normal;
-    text-align: center;
-  }
-  .proj-card__body {
-    padding: 10px 16px 16px;
-  }
-  .proj-card__head {
-    padding: 14px 16px 0;
-  }
-  .proj-card__index {
-    font-size: 34px;
-  }
-  .proj-card__subtitle {
-    font-size: 20px;
-  }
-  .dice-btn {
-    right: 14px;
-    bottom: 14px;
-    width: 48px;
-    height: 48px;
-  }
-  .dice-btn svg {
-    width: 22px;
-    height: 22px;
-  }
-  .dice-result {
-    right: 14px;
-    bottom: 68px;
-    min-width: 0;
-    max-width: min(220px, calc(100vw - 28px));
-  }
-}
-
 /* ---------- section header ---------- */
 .section-head {
   display: flex;
@@ -1334,6 +1236,20 @@ a.tile:hover, .tile--link:hover { transform: translate(-1px,-1px); box-shadow: 3
     font-size: clamp(24px, 8vw, 28px) !important;
     line-height: 0.92 !important;
     text-shadow: 1.5px 1.5px 0 rgba(42,41,38,.85) !important;
+  }
+  .home-hero-card {
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 16px 14px;
+  }
+  .home-hero-card__headline {
+    font-size: clamp(30px, 12vw, 36px) !important;
+    line-height: 0.9 !important;
+    text-shadow: 1.5px 1.5px 0 rgba(42,41,38,.5);
+  }
+  .home-hero-card__body {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
   }
   .home-scale-card {
     grid-row: span 1;

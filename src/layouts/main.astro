@@ -5,17 +5,33 @@ import NavChips from '../components/site/NavChips.astro';
 import SiteFooter from '../components/site/SiteFooter.astro';
 import DiceIsland from '../components/site/DiceIsland.astro';
 import { SITE } from '../data';
-import type { Lang } from '@utils/locale';
+import { getAlternateLanguagePath, type Lang } from '@utils/locale';
 
 interface Props {
   content?: { title?: string; description?: string };
   current: string;
   lang: Lang;
+  /** Defaults to 'website'; pass 'article' from post pages. */
+  ogType?: 'website' | 'article';
+  /** 404 and other error pages have no canonical URL or language alternate. */
+  noindex?: boolean;
 }
 
-const { content = {}, current, lang } = Astro.props;
+const { content = {}, current, lang, ogType = 'website', noindex = false } = Astro.props;
 const pageTitle = content.title ? `${content.title} | ${SITE.title}` : SITE.title;
 const description = content.description ?? SITE.description;
+
+const path = Astro.url.pathname;
+const canonicalUrl = new URL(path, SITE.siteUrl).toString();
+const alternatePath = getAlternateLanguagePath(path, lang);
+const enPath = lang === 'en' ? path : alternatePath;
+const esPath = lang === 'es' ? path : alternatePath;
+const enUrl = new URL(enPath, SITE.siteUrl).toString();
+const esUrl = new URL(esPath, SITE.siteUrl).toString();
+
+const OG_LOCALE: Record<Lang, string> = { en: 'en_US', es: 'es_ES' };
+const ogLocale = OG_LOCALE[lang];
+const ogLocaleAlternate = OG_LOCALE[lang === 'en' ? 'es' : 'en'];
 ---
 
 <html lang={lang}>
@@ -25,6 +41,30 @@ const description = content.description ?? SITE.description;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+
+    {!noindex && <link rel="canonical" href={canonicalUrl} />}
+    {
+      !noindex && (
+        <>
+          <link rel="alternate" hreflang="en" href={enUrl} />
+          <link rel="alternate" hreflang="es" href={esUrl} />
+          <link rel="alternate" hreflang="x-default" href={enUrl} />
+        </>
+      )
+    }
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlternate} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
   </head>
   <body class="page noise">
     <div class="page-frame">
