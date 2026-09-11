@@ -10,36 +10,35 @@
 */
 @font-face {
   font-family: "Kreon";
-  src: url("/fonts/Kreon-VariableFont_wght.ttf") format("truetype-variations"),
-       url("/fonts/Kreon-VariableFont_wght.ttf") format("truetype");
+  src: url("/fonts/Kreon-VariableFont_wght.woff2") format("woff2");
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Biryani";
-  src: url("/fonts/Biryani-Regular.ttf") format("truetype");
+  src: url("/fonts/Biryani-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Biryani";
-  src: url("/fonts/Biryani-Bold.ttf") format("truetype");
+  src: url("/fonts/Biryani-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Ultra";
-  src: url("/fonts/Ultra-Regular.ttf") format("truetype");
+  src: url("/fonts/Ultra-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Nothing You Could Do";
-  src: url("/fonts/NothingYouCouldDo-Regular.ttf") format("truetype");
+  src: url("/fonts/NothingYouCouldDo-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
