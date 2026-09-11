@@ -10,6 +10,16 @@ export const SITE = {
   github: 'https://github.com/TanisJam',
   linkedin: 'https://www.linkedin.com/in/mauricionromero/',
   resumePdf: '/resume/Mauricio_cv.pdf',
+  /* Served by the piece at the root of the domain, not by this project. Same
+   * origin, so a relative path resolves, but the file lives in another repo.
+   */
+  ogImage: {
+    url: '/og.jpg',
+    type: 'image/jpeg',
+    width: 2400,
+    height: 1260,
+    alt: 'A young orange tree at night, fruit ripening in the canopy and its taproot visible below ground, beside the name Mauricio Romero.',
+  },
 };
 
 export const HOME = {

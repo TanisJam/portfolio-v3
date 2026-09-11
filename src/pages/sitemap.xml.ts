@@ -6,8 +6,10 @@ import { SITE } from '../data';
  * stripped, and this list is small and fully known at build time — a
  * dependency buys nothing here that a plain APIRoute doesn't already give us.
  *
- * The bare root (`/`) is intentionally never listed: it is served by a
- * separate project (citrus-sinensis), not this one.
+ * The bare root (`/`) is served by a separate project (citrus-sinensis) but
+ * is still a page of this domain, and robots.txt points every crawler here,
+ * so it is listed. Which Vercel project renders a URL is an implementation
+ * detail no crawler can see.
  */
 
 type Lang = 'en' | 'es';
@@ -45,6 +47,8 @@ const postKey = (post: { slug?: string; id?: string }) => {
 
 const buildEntries = async (): Promise<SitemapEntry[]> => {
   const entries: SitemapEntry[] = [];
+
+  entries.push({ loc: '/', alternates: {} });
 
   for (const path of STATIC_PATHS) {
     const enPath = `${path}/`;
