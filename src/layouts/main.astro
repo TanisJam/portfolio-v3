@@ -40,6 +40,20 @@ const ogImageUrl = new URL(SITE.ogImage.url, SITE.siteUrl).toString();
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Las cuatro caras que se pintan arriba del fold en TODAS las paginas: el
+         masthead usa Ultra ("Mauricio") y Nothing You Could Do ("Romero"), los
+         chips y el eyebrow usan Kreon, y el body usa Biryani Regular. Sin esto
+         el navegador recien las descubre cuando termina de parsear base.css,
+         porque las @font-face viven ahi dentro. Biryani-Bold (57 KB) queda
+         afuera a proposito: no siempre entra en el primer viewport.
+         `crossorigin` no es opcional: las fuentes se piden en modo CORS, y un
+         preload sin el atributo termina bajando el archivo dos veces. -->
+    <link rel="preload" href="/fonts/Ultra-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/NothingYouCouldDo-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Kreon-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Biryani-Regular.woff2" as="font" type="font/woff2" crossorigin />
+
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
 
