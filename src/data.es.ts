@@ -120,7 +120,7 @@ export const PROJECTS_ES = [
     description:
       'Un monorepo para un mundo de D&D 5e asíncrono y multi-DM: gestión de personajes, compendio de reglas navegable, mapa de campaña y una capa de conocimiento del mundo. Una API en Fastify, una web en Next.js y un bot de Discord comparten un paquete de dominio puro con esquemas Zod como única fuente de verdad de las reglas.',
     techs: ['TypeScript', 'Fastify', 'Next.js', 'Drizzle ORM', 'Supabase', 'Discord.js'],
-    live: '',
+    live: 'https://dungeon-hub.mnr.ar',
     source: 'https://github.com/TanisJam/dungeon-hub',
     tag: 'APP',
     accent: 'green',
